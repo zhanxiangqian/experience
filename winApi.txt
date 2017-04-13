@@ -1,0 +1,6 @@
+获得程序路径 windows API
+GetCurrentDirectory（）最近一次使用的目录
+GetModuleFileName（）得到模块目录
+setmousetracking()设置鼠标在不按下左键也能响应移动消息
+
+regedit.exe修改注册表

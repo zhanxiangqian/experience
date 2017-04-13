@@ -1,0 +1,25 @@
+everything这个软件用了很久，总结了一些大家可能没注意到的技巧，分享给大家 
+
+1.指定文件目录搜索示例：
+
+TDDOWNLOAD\ abc        在所有TDDOWNLOAD文件夹下搜索包含abc字符的文件及文件夹
+TDDOWNLOAD\ *.jpg      在所有TDDOWNLOAD文件夹下搜索jpg后缀文件
+F:\TDDOWNLOAD\ abc     在F:\TDDOWNLOAD\目录下搜索包含abc字符的文件及文件夹
+F:\TDDOWNLOAD\ *.jpg   在F:\TDDOWNLOAD\目录下搜索jpg后缀文件
+
+注意：斜杠\后有一个空格，不能省略
+         *：通配符，可以匹配任意长度和类型的字符，都可以省略不写
+
+2.多关键词搜索示例：
+
+123 abc            搜索包含123和abc的文件和文件夹
+123|abc            搜索包含123或abc的文件和文件夹
+*.jpg|*.flv
+.jpg | .flv           搜索jpg或flv后缀文件         （两种表示方式任选一种，第二种竖线|两边加空格）
+
+ ：竖线|表示或，空格表示与，都可以多个连续使用
+
+3.另外理解了这些表达方式后可以自己组合搜索方式
+如：F:\TDDOWNLOAD\ abc|123         在F:\TDDOWNLOAD\目录下搜索包含abc或123字符的文件及文件夹
+
+排除目录!path:d:\kugou

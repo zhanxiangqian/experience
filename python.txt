@@ -1,0 +1,42 @@
+import os 
+
+.... 
+
+os.system("pause")
+
+
+import sys
+print sys.path
+sys.stdout.flush()
+
+
+没有什么能够阻挡
+Python import / pyd / dll
+
+使用Python import 模块时，
+
+先会在模块的搜索path里依次搜索（前面会覆盖之后出现的同名模块），次序为： 
+
+1. 程序的主目录（交互模式下当前的工作目录或 脚本文件所在的目录）
+
+2. 环境变量 PYTHONPATH目录（如果已经进行了设置）
+
+3. 标准链接库目录（标准库模块所在目录 C:\Python27或C:\Python27\Lib\site-packages 目录中）
+
+4. 任何放在标准链接库目录中的.pth文件中记录的目录
+
+打印堆栈
+ import traceback
+ traceback.print_stack()
+
+ （1） 当出现诸如：
+
+
+
+ no module 错误时， 说明无法找到对应的 .pyd 文件（Python中的动态链接库文件），
+
+其可能的原因是：
+
+     a. 该 vtkCommonPython.pyd 文件不在搜索目里。（需拷入到搜索目录下 或 将其目录设置到PYTHONPATH中）
+
+     b. 该 module的  名字有问题， 比如输错了；或 应该为Debug版（如应该为 vtkCommonPython_d.pyd， Debug版的都需在 Python_d.exe中执行，且都需加_d后缀）

@@ -1,0 +1,4 @@
+msconfig.exe
+cmd set 输出变量值
+    set>xxx.txt输出到文档
+shift+右键调出命令行窗口

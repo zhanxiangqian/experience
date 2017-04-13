@@ -1,0 +1,79 @@
+图形填充规则：
+函数QPainterPath：：setFillRule，Qt::WindingFill（射线法，判断焦点的方向，不同方向的焦点相加为0,和>0填充），OddEvenFill(射线法，焦点为技术则填充，偶数不填充).
+
+color.setAlpha（）设置颜色的透明度
+画图
+		color.setAlpha(150 - qSqrt(i)*50);  
+		painter.setPen(color);  
+		painter.drawPath(path);  
+填充
+
+布局
+QVBoxLayout *pLayout
+pLayout->addwidget(button);
+pLayout->addStretch();加弹簧
+setLayout(pLayout);
+
+打开保存对话框QFileDialog
+
+第一个参数parent，用于指定父组件。注意，很多Qt组件的构造函数都会有这么一个parent参数，并提供一个默认值0；
+第二个参数caption，是对话框的标题；
+第三个参数dir，是对话框显示时默认打开的目录，"." 代表程序运行目录，"/" 代表当前盘符的根目录(Windows，Linux下/就是根目录了)，也可以是平台相关的，比如"C:\\"等；
+第四个参数filter，是对话框的后缀名过滤器；
+多个文件使用空格分隔：比如我们使用"Image Files(*.jpg *.png)"就让它只能显示后缀名是jpg或者png的文件。
+多个过滤使用两个分号分隔：如果需要使用多个过滤器，使用";;"分割，比如"JPEG Files(*.jpg);;PNG Files(*.png)"；
+第五个参数selectedFilter，是默认选择的过滤器；
+第六个参数options，是对话框的一些参数设定，比如只显示文件夹等等，它的取值是enum QFileDialog::Option，每个选项可以使用 | 运算组合起来。
+
+信号和槽：
+信号声明： signals:  发射信号  槽返回值 = emit mysignal();
+槽声明：public slots:
+链接：connect（sender，SIGNAL(),receive,SLOT（））；
+
+设置树多选
+nodetreeWdiget->setSelectionMode(QAbstractItemView::ExtendedSelection);
+然后通过QList<QTreeWidgetItem*> selectedItemList = this->selectedItems();获得所选择的items。
+
+item角色
+item->data(Qt::UserRole).toInt()
+
+lineEdit
+	cdlg.ui.lineEdit->setText(text);设置文字
+	cdlg.ui.lineEdit->selectAll();选择全部
+
+QVariant 设置自定义类型的指针
+pPortraitView->setData( QVariant::fromValue((QObject*)pNewItem) ) ;
+
+列表排序功能实现
+ui.treeWidget->setSortingEnabled(true);
+
+增加启动界面
+QSplashScreen类
+
+	pspalsh->setPixmap(QPixmap(":/Post/Resources/launch.jpeg"));
+	pspalsh->show();
+	Qt::Alignment topright = Qt::AlignRight | Qt::AlignRight;
+	pspalsh->showMessage(QObject::tr("Loading..."), topright, Qt::white);
+	Post w;
+	w.show();
+	pspalsh->finish(&w);
+Qtreewidget + QtreeWidgetItem::setcheckstate()会发射itemChanged(QtreeWidgetItem *,int)信号
+
+自定义排序方式
+listP->setSortingEnabled( false ); //不使能QT的自动排序
+listP->header()->setSortIndicatorShown( true ); // 设置三角标识符可见
+listP->header()-setSectionsClickable( true ); // 设置标题栏单击响应使能
+然后在
+connect( listP->header(), SIGNAL( sectionClicked(int) ), this, SLOT( OnClickColumn(int) ) );
+的OnClickColumn( int ) 响应中
+加上自定义的排序代码就可以了。
+
+对容器的排序
+qSort(begin,end,函数指针)
+bool compare(const BarAmount &barAmount1, const BarAmount &barAmount2)
+
+编译ui文件
+在你的qt安装路径的bin目录中有个uic.exe 的程序 这个是用来生成 ui文件对应的头文件用的。
+使用命令 uic.exe a.ui -o a.h 就可以生成代码了。 你可以使用a.h 中生成的 类。那是一个窗口控件类，申明一个实例  然后 .show() 就可以了。
+如果你想自动的将 ui 文件编成 h文件 需要安装 qt addin for visual studio
+然后在你的项目上右键 选择 转换为 qt－addin 工程 就可以。

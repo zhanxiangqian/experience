@@ -1,0 +1,44 @@
+针对 mcrack项目的cygwin配置信息
+
+1 首先对ssh做简单的介绍
+  ssh是Linux下非常安全的数据传输协议，并能通过附加参数的方式，执行命令。本项目的求解过程需要向linux服务器发送数据并拿回求解的结果，因而采用ssh工具。
+  Linux下ubuntu客户端使用
+ （1）ssh的安装；大部分的Linux会附带这个软件，通过更新源然后安装即可
+  $sudo apt-get update
+  $sudo apt-get install ssh
+  启动ssh
+  $sudo /etc/init.d/ssh start
+
+  服务器使用
+  sudo apt-get install openssh-server
+2 下面介绍cygwin
+  ssh是Linux下的工具，windows是没有的，但是cygwin作为一个UNIX的模拟环境，提供了大量的工具库及常用程序（我们只用ssh），使你可以在windows上像使用UNIX一样。
+注：还有其他方式实现window上登录Linux的方式，但考虑到ssh能执行附带的指令，采用ssh或许是比较好的方式。
+
+ 即我们可以通过cygwin提供的ssh实现向Linux服务器发送数据并执行附带命令的需求。
+
+
+下面cygwin中的home\user对应于Linux的home/user，
+
+3 实现两个系统间的无口令远程登录。
+ ssh远程登录的方式有两种，1种使用口令（这里不介绍），2使用密钥；
+ 对密钥登录的方式做简单的介绍
+ （1）ssh生成一对互相匹配的密钥文件（公钥和私钥），私钥加密的文件需要用公钥解密，反之用私钥解密
+ （2）私钥用于解密放在本地，公钥要复制一份，一份放在本地，另一份放在服务器上，两份公钥用于匹配身份，实现无口令登录
+
+ 将cygwin中的home\下的用户名改成本机的用户名
+ (1)在cygwin下点击cygwin.bat，输入指令创建密钥对
+    $ssh-keygen -t rsa    #-t用于指定密钥类型为rsa,该命令会在cygwin\home\user\.ssh\下生成id_rsa(私钥) id_rsa.pub（公钥）
+ (2)创建用于放置密钥的路径
+    $ssh qq@192.168.0.124  #先登录linux（qq为服务器的一个用户名，192.....为地址）
+    $mkdir  .ssh
+    $chmod 700 .ssh
+    $exit
+   以上命令依次为，创建/home/qq/.ssh的目录，并且切除其他人对于该文件的所有权，然后退出
+ （3）复制一份公钥并放置在我们创建的目录并且更名为authorized_keys
+    $ scp cygwin\home\user\.ssh\id_rsa.pub  qq@192.168.0.124:/home/qq/.ssh/authorized_keys
+
+注：（2）（3）步骤可以使用一行命令代替，这里为了说明密钥的放置过程全部写了出来
+  可以用$ssh-copy-id -i qq@192.168.1.161 是一样的。
+ 这样就可以使用$qq@192.168.0.124直接登录而无需每次有输入密码了
+注：

@@ -1,0 +1,32 @@
+这两天在CentOS 7.1上安装Python2.7.10时遇到一个很挺恶心人的问题，至于为什么会发生不是很清楚
+该问题导致后续的aster安装不成功，至于还有后续哪些影响未考证。
+
+1、问题描述：装的版本明明是2.7.10，查看版本号的时候终端都是返回python2.7.5的提示符
+
+2、问题产生的条件：
+	Python安装包：Python-2.7.10.tgz(来自Python官网)
+
+	configure时，指定要编译动态链接库，指令：./configure --enable-shared （默认安装目录在/usr/local/bin）
+
+	然后编译安装。指令：make&&make install
+
+	安装完成之后查看版本号，
+	指令 /usr/local/bin/python2.7 -V    
+	输出的版本号为2.7.5（CentOS 7.1预装的Python版本号）  
+
+	另执行python、python2、python2.7均为2.7.5
+
+3、解决方法：预先建一个文件夹用于存放库文件，在configure时将要编译出来的库位置告知execute
+	
+	指令：mkdir -p /usr/local/python2.7.10/lib   
+
+	指令：./configure --prefix=/usr/local/python2.7.10 --enable-shared LDFLAGS="-Wl,-rpath=/usr/local/python2.7.10/lib"
+
+	编译安装，make&&make install
+
+        再次查看版本号
+	/usr/local/python2.7.10/python -V
+        输出2.7.10,版本正常
+
+ps：如果不指定编译动态链接库时，一切正常。装的2.7.10就是2.7.10，此问题仅在需要编译动态库时才会出现。
+	有些疑惑，为什么增加动态库会出现这个问题？

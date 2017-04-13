@@ -1,0 +1,11 @@
+int main(int argc, char *argv[])
+{
+	QApplication a(argc, argv);
+	QStringList b = QStyleFactory::keys();//列出支持的风格
+	QApplication::setStyle(QStyleFactory::create(b[1])); // styleName 就是上图所列
+	
+	QApplication::setPalette(QApplication::style()->standardPalette()); // 选择风格默认颜色
+	DeskTop w;
+	w.show();
+	return a.exec();
+}

@@ -1,0 +1,4 @@
+ 增加自定义快捷键
+Tools -> Edit VA Snippets
+
+ //modified by zxq at 2016/12/02 13:49

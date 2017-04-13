@@ -1,0 +1,19 @@
+使用easy_install安装Python组件
+1、下载easy_install.py 地址https://pypi.python.org/pypi/setuptools
+2、安装指令：python easy_install.py install
+3、安装好后执行指令：easy_install
+  提示出错pkg_resources.DistributionNotFound: The ‘setuptools==0.9.8‘ distribution was not found and is required by the application
+
+4、解决办法；安装一个distribution   下载distribution链接https://pypi.python.org/pypi/distribute/0.6.49   (这里使用6.49)
+   解压后，cd到解压目录，执行安装指令python setup.py install
+
+5、使用easy_install安装pip
+   指令：easy_install pip
+   
+   notes:这里使用pip而不是easy_install去安装Python组件是因为，通过easy_install安装会出错，至于出错原因并没有去查，总之使用pip没有问题
+
+6、使用pip安装组件
+   /usr/local/python2.7.10/bin/pip install numpy
+
+   安装成功，其他模块安装与此相同，
+

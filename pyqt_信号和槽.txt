@@ -1,0 +1,66 @@
+import sys 
+import time 
+from PyQt4.QtCore import * 
+from PyQt4.QtGui import *
+
+#################################################################### 
+class MyWindow(QWidget): 
+    def __init__(self, *args): 
+        QWidget.__init__(self, *args)
+
+        self.label = QLabel(" ") 
+        layout = QVBoxLayout() 
+        layout.addWidget(self.label) 
+        self.setLayout(layout) 
+        self.connect(self, SIGNAL("didSomething"), 
+                     self.update_label) 
+        self.do_something()
+
+    def do_something(self): 
+        self.emit(SIGNAL("didSomething"), "important", "information")
+
+    def update_label(self, value1, value2): 
+        self.label.setText(value1 + " " + value2)
+
+#################################################################### 
+if __name__ == "__main__": 
+    app = QApplication(sys.argv) 
+    w = MyWindow() 
+    w.show() 
+    sys.exit(app.exec_())
+
+可以改成如下形式，运行结构一样
+
+import sys 
+import time 
+from PyQt4.QtCore import * 
+from PyQt4.QtGui import *
+
+#################################################################### 
+class MyWindow(QWidget): 
+    def __init__(self, *args): 
+        QWidget.__init__(self, *args)
+
+        self.label = QLabel(" ") 
+        layout = QVBoxLayout() 
+        layout.addWidget(self.label) 
+        self.setLayout(layout) 
+        self.connect(self, SIGNAL("didSomething"), 
+                     self.update_label) 
+        self.do_something()
+
+    def do_something(self): 
+        self.emit(SIGNAL("didSomething"), "important","information")
+
+    def update_label(self, *args): 
+        label_str='' 
+        for argv in args: 
+            label_str+=' '+argv 
+        self.label.setText(label_str)
+
+#################################################################### 
+if __name__ == "__main__": 
+    app = QApplication(sys.argv) 
+    w = MyWindow() 
+    w.show() 
+    sys.exit(app.exec_())

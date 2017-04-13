@@ -1,0 +1,15 @@
+from functools import partial
+
+Python中的partial可以减少参数，提前将参数赋予它
+in [11]: add(4,3)
+Out[11]: 7
+
+In [12]: plus = partial(add,100)
+
+In [13]: plus(9)
+Out[13]: 109
+
+In [14]: plus2 = partial(add,99)
+
+In [15]: plus2(9)
+Out[15]: 108

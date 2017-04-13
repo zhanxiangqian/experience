@@ -1,0 +1,18 @@
+void CmfctestView::OnDraw(CDC* pDC)
+{
+	CmfctestDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	if (!pDoc)
+		return;
+
+	// TODO: 在此处为本机数据添加绘制代码
+	CRgn rgn;
+	rgn.CreateRectRgn(10, 10, 200, 200);
+	pDC->SelectClipRgn(&rgn);
+
+	// test
+	pDC->Rectangle(10, 10, 100, 100);
+	pDC->MoveTo(0, 0);
+	pDC->LineTo(300, 300);
+
+}

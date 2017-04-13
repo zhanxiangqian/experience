@@ -1,0 +1,2 @@
+上面其实已经提到过，“同一个父窗体”或“一个button group”，这就是分组。如果没有进行分组，则默认拥有相同父窗体的radio buttons都将具有相互排他性，所以如果你想在一个窗体中表达多组radio buttons的效果，需要显式地对它们进行分组，可以使用QGroupBox或者QButtonGroup。建议使用QButtonGroup，因为它仅仅是一个容器，不会有任何视觉表现，并且对于包含在它里面的子buttons，QButtonGroup提供比QGroupBox方便的信号槽操作。
+另：对于状态已经为checked的radiobutton调用setChecked(false)是无效的，只能通过选定另外一个radiaobutton

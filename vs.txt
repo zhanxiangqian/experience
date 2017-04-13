@@ -1,0 +1,12 @@
+vs工具dumpbin 使用方法
+dumpbin详细用法  此博文包含图片	(2012-04-06 19:25:11)转载
+使用vc自带的工具dumpbin可以查看动态链接库dll的导出函数接口
+路径一般是C:\Program Files\Microsoft Visual Studio\VC98\Bin\DUMPBIN.EXE
+同时还有一个批处理文件VCVARS32.BAT也在C:\Program Files\Microsoft Visual Studio\VC98\Bin下
+1 首先找到你要反编译的文件的路径下，如我的动态链接库dcrf32.dll在C:\Users\Administrator\Desktop\RFCPUCard下
+2 按路径C:\Program Files\Microsoft Visual Studio\VC98\Bin找到批处理文件VCVARS32.BAT将其直接拖拽到控制台窗口中
+
+查看导出接口
+ 输入dumpbin  -exports  dcrf32.dll，回车
+ 查看段表
+  dumpbin /headers my32bit.dll

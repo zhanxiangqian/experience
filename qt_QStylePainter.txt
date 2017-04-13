@@ -1,0 +1,27 @@
+Example using QStyle directly
+
+void MyWidgetpaintEvent(QPaintEvent   event )
+{
+    QPainter painter(this);
+
+    QStyleOptionFocusRect option;
+    option.initFrom(this);
+    option.backgroundColor = palette().color(QPaletteBackground);
+
+    style()-drawPrimitive(QStylePE_FrameFocusRect, &option, &painter, this);
+}
+Example using QStylePainter
+
+void MyWidgetpaintEvent(QPaintEvent   event )
+{
+    QStylePainter painter(this);
+
+    QStyleOptionFocusRect option;
+    option.initFrom(this);
+    option.backgroundColor = palette().color(QPaletteBackground);
+
+    painter.drawPrimitive(QStylePE_FrameFocusRect, option);
+}
+
+
+更多信息请参考qt文档

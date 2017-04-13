@@ -1,0 +1,79 @@
+在F盘建立一个名称为myFile的文件夹, 把Windows系统的cmd.exe复制到myFile文件夹下，并在myFile中建立myBat.txt文件，改名为myBat.bat, 右击myBat.bat文件，选择文本文件的方式打开，进行编辑。以后，我就不再介绍这个简单的过程了。
+
+        在这篇文章中，我们将介绍echo的用法。我们先来复习一下这个单词吧。
+
+echo ： 回声。例句： I can hear the echoes of my voice.
+
+
+        myBat.bat文件的内容为：
+
+[plain] view plain copy
+echo 这是一个批处理文件  
+         在cmd.exe中运行myBat.bat文件，结果可以发现，在shell界面上，有该命令行（包括汉字）的回显，另外，又成功输出了后面的汉字。可见，在这里，echo命令的作用就类似于C语言中的printf函数。
+
+          myBat.bat文件的内容为：
+
+[plain] view plain copy
+echo off  
+echo 这是一个批处理文件  
+echo 这是一个批处理文件  
+echo 这是一个批处理文件  
+           在这里， echo off关闭了回显，所以下面的三个命令行不会出现回显，但是echo off本身回回显
+
+myBat.bat文件的内容为：
+
+[plain] view plain copy
+echo off  
+echo 这是一个批处理文件  
+echo 这是一个批处理文件  
+echo 这是一个批处理文件  
+  
+echo on  
+echo 这是一个批处理文件  
+echo 这是一个批处理文件  
+echo 这是一个批处理文件  
+
+
+        在这里，echo off关闭回显（但其本身仍然会回显）， 接下来三个命令行不会回显，echo on是打开回显，所以最后三个命令行会回显，三十，要注意，echo on命令本身不会回显，因为，此时此刻，echo 还处在off的状态，只有当echo on执行完后， echo 才会是on的状态。
+
+        
+
+myBat.bat文件的内容为：
+
+[plain] view plain copy
+echo  
+echo off  
+echo  
+       在这里，单独的一个echo用来检测echo究竟是on的状态还是off的状态。
+
+       当然， echo还有很多其他功能呢，比如，echo后面加一个点表示换行。另外，echo还可以用来建立文件呢！我们在这里就不讲这个了。
+
+
+        我们知道， echo off可以关闭下面命令的回显，但是不能关闭自身的回显，怎么办呢？这个时候，就有必要用@
+
+
+        myBat.bat文件的内容为：
+
+[plain] view plain copy
+@ echo on  
+@ echo on  
+        在这里，@用于关闭本命令回显。因此，在通常情况下，要关闭所有命令行的回显，则用该用下面的方式：
+[plain] view plain copy
+@ echo off  
+md 1  
+rd 1  
+md 2  
+rd 2  
+
+        最后，提示一下，如下是正确的：
+[plain] view plain copy
+@ echo off  
+md 1   
+rd 1  
+       但如下是错误的（不能实现预定功能）：
+[plain] view plain copy
+@ echo off  
+md 1 rd 1  
+
+        
+     注意，@并不受echo状态的影响，关于echo和@的介绍，到此为止。最后说一下，如果要查某命令的使用方法，可以如下（在shell界面和.bat中，都可以）：

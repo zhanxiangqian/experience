@@ -1,0 +1,5 @@
+关于异常http://blog.sina.com.cn/s/blog_a9303fd901018ost.html
+
+关于static_cast与dynamic_cast
+static_cast强制转换
+dynamic_cast强制转换但是由父类转换为子类是，指针会被置空，引用则会抛出异常。
