@@ -1,0 +1,54 @@
+void Material_Add::onoprate()
+{
+	QString path = QCoreApplication::applicationDirPath() + "/materials.xml";
+	QDomDocument doc;
+	QDomProcessingInstruction instruction = doc.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"UTF-8\"");//暂时不是很明确是做什么用的
+	doc.appendChild(instruction);
+
+	QFile file(path);
+	file.open(QIODevice::ReadOnly);
+	doc.setContent(file.readAll());
+	file.close();
+
+	QDomElement root = doc.documentElement();//读取根节点
+	if (root.isNull())
+	{
+		root = doc.createElement("My_Material");//首次创建根节点
+		doc.appendChild(root);
+	}
+
+	QDomNode node = root.firstChild();//读取第一个子节点  
+	bool is_existed = false;
+	while (!node.isNull())
+	{
+		QString tagName = node.toElement().tagName();
+		if (tagName.compare(ui.lineEdit_Name->text()) == 0) //若已经存在同名材料则覆盖
+		{
+			node.toElement().setAttribute("Reflectivity", ui.lineEdit_Ref->text());
+			node.toElement().setAttribute("Thermal_Conductivity", ui.lineEdit_TC->text());
+			node.toElement().setAttribute("Emissivity", ui.lineEdit_Emi->text());
+			node.toElement().setAttribute("Density", ui.lineEdit_Den->text());
+			node.toElement().setAttribute("Specific_Heat", ui.lineEdit_SH->text());
+			is_existed = true;
+		}
+		node = node.nextSibling();//读取下一个兄弟节点  
+	}
+	if (!is_existed)//如果材料不存在则插入到第一个节点的位置
+	{
+		QDomElement name_elem = doc.createElement(ui.lineEdit_Name->text());
+		root.appendChild(name_elem);
+		name_elem.setAttribute("Reflectivity", ui.lineEdit_Ref->text());
+		name_elem.setAttribute("Thermal_Conductivity", ui.lineEdit_TC->text());
+		name_elem.setAttribute("Emissivity", ui.lineEdit_Emi->text());
+		name_elem.setAttribute("Density", ui.lineEdit_Den->text());
+		name_elem.setAttribute("Specific_Heat", ui.lineEdit_SH->text());
+		QDomText t = doc.createTextNode(ui.lineEdit_Name->text());//创建一个文本节点（没啥用）
+		name_elem.appendChild(t);
+	}
+
+	file.open(QIODevice::WriteOnly | QIODevice::Truncate);
+	QTextStream text(&file);
+	text.setCodec("UTF-8");
+	doc.save(text, 2, QDomNode::EncodingFromTextStream);
+	file.close();
+}

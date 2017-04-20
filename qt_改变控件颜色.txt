@@ -1,0 +1,17 @@
+﻿class ValidationEntry(qt.QLineEdit):
+    """Change the color background if the value is valid
+    """
+    valid_color = "white"
+    invalid_color = "red"
+
+    def __init__(self, parent=None):
+        qt.QLineEdit.__init__(self, parent)
+        connect(self, SIG("textChanged(const QString&)"), self._update_color)
+        self._update_color(self.text())
+
+    def _update_color(self, txt):
+        """Update the color according to input"""
+        color = self.valid_color
+        if not self.hasAcceptableInput():
+            color = self.invalid_color
+        self.setStyleSheet("background-color: %s" % color)

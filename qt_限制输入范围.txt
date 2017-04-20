@@ -1,6 +1,0 @@
-QlineEdit           
- QRegExp regx("[0-9]+$");
-            QValidator *validator = new QRegExpValidator(regx, lined );
-            lined->setValidator( validator );
-
-setValidator(new QIntValidator(0, 1000, this)); //0, 1000为输入的数字值范围

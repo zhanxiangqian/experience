@@ -1,0 +1,33 @@
+QString path = QCoreApplication::applicationDirPath() + "/setting.ini";
+
+	QSettings settings(path, QSettings::IniFormat);
+	settings.beginGroup("Freq");
+	double f_start = .0;
+	double f_step = .0;
+	double f_end = .0;
+	int f_num = 0;
+	int f_type = 0;
+	if (ui.radioButton_2->isChecked())
+	{
+		f_type = 0;
+		f_start = ui.lineEdit_3->text().toDouble();
+		f_end = f_start;
+		f_num = 1;
+		f_step = .0;
+	}
+	else
+	{
+		f_type = 1;
+		f_start = ui.lineEdit_4->text().toDouble();
+		f_num = ui.lineEdit->text().toInt();
+		f_end = ui.lineEdit_5->text().toDouble();
+		double num = f_num - 1;
+		f_step = (ui.lineEdit_5->text().toDouble() - f_start) / num;
+	}
+	settings.setValue("f_type", f_type);
+	settings.setValue("f_start", f_start);
+	settings.setValue("f_step", f_step);
+	settings.setValue("f_end", f_end);
+	settings.setValue("f_num", f_num);
+	settings.endGroup();
+	close();

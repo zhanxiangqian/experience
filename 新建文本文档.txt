@@ -1,0 +1,10 @@
+	QString color = "background-color:%1";
+	if (p->hasAcceptableInput())
+	{
+		color = color.arg(VALID_COLOR);
+	}
+	else
+	{
+		color = color.arg(INVALID_COLOR);
+	}
+	p->setStyleSheet(color);

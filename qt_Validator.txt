@@ -1,0 +1,14 @@
+关于使用QValidator的一些注意事项
+
+#include <QDoubleValidator>
+#include <QRegExpValidator>
+
+   ui.lineEdit_Name->setText("Undefined");
+   QRegExp a = QRegExp("^\\w+$");//注意：qt中使用正则表达式时，一定要用用双转义字符
+   QRegExpValidator *Reg = new QRegExpValidator(a);
+   ui.lineEdit_Name->setValidator(Reg);
+
+   QDoubleValidator *dou_vld = new QDoubleValidator(this);
+   dou_vld->setRange(.0, 45.0, 5);//即使指定了范围，在lineEdit中任然可以输入大于这个范围的值，原因它可能认为你要输入科学计数格式输入，而且它无法判断你是否输入完毕。
+   //dou_vld->setNotation(QDoubleValidator::StandardNotation);//该处设置输入格式为标准格式，注意：即使这样也还可以输入超出范围的浮点数。
+   正确的使用方法是在lineEdit的textChenged后,使用lineedit->hasAcceptableInput函数返回值来检查输入的值是否合理。
