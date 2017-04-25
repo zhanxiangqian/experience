@@ -1,0 +1,4 @@
+	ui.widget->setStyleSheet("background - color:blue");//子窗口会继承这个风格
+	ui.widget->setStyleSheet("#ui.widget{ background - color:blue; }");//仅仅设置自己的风格
+
+        推荐设置QPalette代替这种方法

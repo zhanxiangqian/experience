@@ -1,0 +1,7 @@
+vs+qt
+1.在项目文件夹里创建名为*.rc的文件，如myapp.rc。
+2.文件中写入IDI_ICON1 ICON DISCARDABLE "myapp.ico"
+  其中，myapp.ico为图标的文件名。
+3.将文件myapp.ico拷贝到项目文件夹内。
+4.在解决方案资源管理器中，右键点击项目，添加myapp.rc及myapp.ico。
+5.重新生成解决方案。

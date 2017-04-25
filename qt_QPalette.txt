@@ -1,0 +1,9 @@
+	QPalette pal(ui.widget->palette());
+
+	设置背景黑色
+	pal.setColor(QPalette::Background, QColor(91, 155, 213));
+	ui.widget->setAutoFillBackground(true);
+	ui.widget->setPalette(pal);
+
+	designer 设置扁平 flat 
+ 	编辑样式表； background；transparent
