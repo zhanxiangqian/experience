@@ -1,0 +1,7 @@
+	QString filepath = path + "/heat_solver.ini";
+	QSettings settings(filepath, QSettings::IniFormat);
+	settings.beginGroup("file");
+	settings.setValue("file_name", ui.lineEdit->text());
+	settings.endGroup();
+        
+        exit(0);这样退出会导致文件没来得及存就退了，可以调用一下settings.sync()函数，确保存储
