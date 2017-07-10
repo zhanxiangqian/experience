@@ -1,0 +1,17 @@
+以qt-vs-tools-msvc2013-2.1.2.vsix为例
+.vsix的文件会使用VSIXInstaller.exe进行安装
+首先：这是一个安装文件，安装之后会有安装日志
+大概如下
+2017/5/19 9:55:54 - Microsoft VSIX Installer
+2017/5/19 9:55:54 - -------------------------------------------
+2017/5/19 9:55:55 - Initializing Install...
+2017/5/19 9:55:55 - 扩展详细信息...
+2017/5/19 9:55:55 - 	Identifier      : QtVsTools.15021976-cd02-4fd0-89bd-e36f85abe16a
+
+这个Identifier      卸载的时候会使用VSIXInstaller.exe进行卸载
+
+VSIXInstaller.exe的路径大概在
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\VSIXInstaller.exe
+
+使用下面的语法卸载
+vsixinstaller  /q /a /u:"QtVsTools.15021976-cd02-4fd0-89bd-e36f85abe16a"

@@ -1,0 +1,107 @@
+cmake_minimum_required(VERSION 2.8.11)
+ 
+if(POLICY CMP0020)
+  cmake_policy(SET CMP0020 NEW)
+endif()
+
+#qt vtk vki python qtribbion occ
+
+set(projectName clasp)
+PROJECT(${projectName})
+
+add_definitions(-DWNT)
+add_definitions(-DNOTDLLFORMAT)
+
+ # ADD_DEFINITIONS(-DDEBUG)
+
+add_definitions(-DRCS_MODE)
+
+# root of your msvc14 x64 prebuild, there should be a `/lib/cmake` dir
+set( CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} $ENV{QT5_DIR} )  增加qt的查找路径
+set( CMAKE_INCLUDE_CURRENT_DIR ON )
+set( CMAKE_AUTOMOC ON )   增加moc的处理
+
+SET(VTK_DIR ${Products}/Debug/VTK7.11/lib/cmake/vtk-7.1)  增加vtk的查找路径
+  find_package(VTK REQUIRED)
+  target_link_libraries(${projectName} ${VTK_LIBRARIES})
+  if(VTK_LIBRARIES)
+    if(${VTK_VERSION} VERSION_LESS "6")
+      target_link_libraries(${projectName} ${VTK_LIBRARIES} QVTK)
+    else()
+      target_link_libraries(${projectName} ${VTK_LIBRARIES})
+    endif()
+  else()
+    target_link_libraries(${projectName} vtkHybrid QVTK vtkViews ${QT_LIBRARIES})
+  endif()
+
+
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} 
+    ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+
+#ui
+set(solver_UI
+solver/excitation.ui
+solver/init_setting.ui
+solver/record.ui
+)
+
+
+set(UI_FILES
+    ${solver_UI}
+    ${somap_UI}
+)
+qt5_wrap_ui(UISrcs ${UI_FILES} ) 增加对于ui的支持
+
+qt5_wrap_cpp(__Module_MOC_HDRS ${Module_HDRS})  将moc文件输出到一个变量中，便于梳理项目结构
+
+
+#aux_source_directory(post post_SRCS)  自动查找路径“post”下的源文件到变量post_SRCS
+
+##vs filter
+SOURCE_GROUP("main" FILES      增加文件筛选
+    ${main_SRCS}
+)
+
+SOURCE_GROUP("moduleinterface" FILES
+    ${moduleinterface_SRCS}
+)
+
+add_executable(${projectName}    生成exe项目
+  ${Module_SRCS}
+  ${UISrcs} 
+  ${QRC_SOURCES}
+)
+
+
+find_package(Qt5Core)    使用qt库 该用法将同时配置好debug和release
+target_link_libraries(${projectName} Qt5::Core)
+
+find_package(Qt5Widgets)
+target_link_libraries(${projectName} Qt5::Widgets)
+
+find_package(Qt5Gui)
+target_link_libraries(${projectName} Qt5::Gui)
+
+find_package(Qt5OpenGL)
+target_link_libraries(${projectName} Qt5::OpenGL)
+
+find_package(Qt5Xml)
+target_link_libraries(${projectName} Qt5::Xml)
+
+find_package(Qt5Charts)
+target_link_libraries(${projectName} Qt5::Charts)
+
+
+#link
+TARGET_LINK_LIBRARIES(${projectName} debug ${Python_lib})  增加debug
+TARGET_LINK_LIBRARIES(${projectName} debug ${devtools_lib})
+TARGET_LINK_LIBRARIES(${projectName} debug ${QtitanRibbon_lib})
+TARGET_LINK_LIBRARIES(${projectName} debug ${Occt_lib})
+
+TARGET_LINK_LIBRARIES(${projectName} optimized ${Python_lib})  增加release
+TARGET_LINK_LIBRARIES(${projectName} optimized ${devtools_lib})
+TARGET_LINK_LIBRARIES(${projectName} optimized ${QtitanRibbon_lib})
+TARGET_LINK_LIBRARIES(${projectName} optimized ${Occt_lib})

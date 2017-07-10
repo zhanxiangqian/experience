@@ -25,3 +25,12 @@ ELSE()
   LIST(APPEND _link_LIBRARIES $ENV{QTITANRIBBON_ROOT_DIR}/lib/qtnribbon2.lib)
 ENDIF()
 ENDIF()
+
+
+让用户输入指定值
+set (Products_Dir  "" CACHE PATH "Products_Dir")
+if("${Products_Dir}" STREQUAL "")
+  message (FATAL_ERROR "NOT FOUND: Products_Dir" )
+else()
+  SET(VTK_DIR ${Products_Dir}/VTK6.3/lib/cmake/vtk-6.3)
+endif()

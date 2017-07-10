@@ -1,0 +1,15 @@
+	gmshpath.insert(0, "\"");
+	gmshpath.append("\"");
+
+	//qDebug() << gmshpath;
+
+	m_stpFilePath.insert(0, "\"");
+	m_stpFilePath.append("\"");
+
+	m_solveMeshFilePath.insert(0, "\"");
+	m_solveMeshFilePath.append("\"");
+
+	QString cmdsolve = gmshpath  + " -bgm -string \"General.ExpertMode=1\" -merge " + m_stpFilePath + " -2 -algo del2d -o " + m_solveMeshFilePath + " -clmax " + ui->lineEdit->text();
+	QString cmdvisual = gmshpath + " -bgm -string \"General.ExpertMode=1\" -merge " + m_stpFilePath + " -2 -algo del2d -o " + m_visualMeshFilePath + " -clmax " + ui->lineEdit->text();
+        
+        命令行调用程序路径有空格的解决方法

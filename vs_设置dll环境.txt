@@ -1,0 +1,2 @@
+属性-》调试-》环境，语法如下
+PATH=%PATH%;D:\project\VTK\bin;D:\project\Python27_d;D:\QtitanRibbon3.2.5_msvc2012_source.64\installpack001p\bin;D:\project\oprencas_6.9.1_d\install\win64\vc12\bind;

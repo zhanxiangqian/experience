@@ -1,0 +1,4 @@
+
+bool QFile::open ( OpenMode mode )
+
+在WriteOnly 或者 ReadWrite模式下，如果文件不存在，就会试图创建一个。

@@ -1,0 +1,42 @@
+ VS集成Qt时，VS中的.vcxproj.user 文件相对于Qt的作用
+
+
+environment :
+
+windows 7 + VS2013 + Qt5.3.0 + addin1.2.4
+
+analyse:
+
+.vcxproj.user是用户配置文件，保存用户数据的。
+
+
+
+在创建Qt Application工程时会在.vcxproj.user文件中添加以下两行内容。
+
+<QTDIR>E:\Qt5.3.0\x64</QTDIR>
+// 表示QTDIR的绝对路径
+
+<LocalDebuggerEnvironment>PATH="$(QTDIR)\bin\%3b$(PATH)</LocalDebuggerEnvironment>  // 加入环境变量
+
+VS由此两行内容获得QTDIR路径，前加入运行环境中。
+
+因此在上传代码时，需要上传 .vcxproj.user文件。
+
+
+
+在没有添加QTDIR为全局环境变量时：
+
+向.vcxproj.user文件中写入QTDIR路径的内容，有且仅有在创建Qt工程时，才会写入，所以在删除.vcxproj.user文件后，再运行编译程序时会提示：
+
+>Moc'ing ***.h...
+
+>系统找不到指定的路径。
+
+最后弹出：error MSB6006: "cmd.exe" exited with code 3.
+
+
+在Qt4工程移植到Qt5时：
+
+由于Qt4没有将QTDIR保存到.vcxproj.user中，所以，也会弹出error MSB6006: "cmd.exe" exited with code 3.错误。
+
+解决办法，只需要将上面的两行内容加入新生成的vcxproj.user文件中的对应位置即可

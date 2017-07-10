@@ -1,0 +1,5 @@
+Unix, Linux, Mac OS 如果想进入当前目录下的'my files'文件夹，有如下三种方法(当然还可能有更多)：
+ 1 使用'\' $cd my\ files
+2 使用''' $cd my' 'files
+3 使用'"' $cd my" "files
+总体都是将空格转义或者注释起来

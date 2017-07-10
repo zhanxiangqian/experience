@@ -1,0 +1,6 @@
+当应用程序运行时，提示找不到qt plugins的解决方案
+1 、Qt将首先将应用程序的可执行文件目录作为搜索插件的基本目录。 例如，如果应用程序在C:\Program Files\MyApp并且有一个样式插件，Qt将查找C:\Program Files\MyApp\styles 。 （请参阅QCoreApplication :: applicationDirPath （）来了解应用程序的可执行文件的位置。）
+2、Qt还将查找QLibraryInfo :: location （ QLibraryInfo :: PluginsPath ）指定的目录，该目录通常位于QTDIR/plugins （其中QTDIR是安装Qt的目录）。 
+3、如果您希望Qt查看其他地方，您可以根据需要添加与QCoreApplication :: addLibraryPath （）的调用相同的路径。 而如果要设置自己的路径或路径，可以使用QCoreApplication :: setLibraryPaths （）。 
+4、您还可以使用qt.conf文件来覆盖编译到Qt库中的硬编码路径。 有关详细信息，请参阅使用qt.conf文档。 
+5、另一种可能性是在运行应用程序之前设置QT_PLUGIN_PATH环境变量。 如果设置，Qt将在变量中指定的路径（由系统路径分隔符分隔）中查找插件

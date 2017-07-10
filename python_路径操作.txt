@@ -1,0 +1,3 @@
+import os
+dirs = os.path.join( os.path.dirname(__file__),'../..')  #上上级文件目录名
+os.sys.path.append(os.path.join( os.path.dirname(__file__), '../..'))   #将上上级目录加载到python的环境变量中。

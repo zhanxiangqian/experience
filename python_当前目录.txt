@@ -1,0 +1,22 @@
+C:\junk\so&gt;type \junk\so\scriptpath\script1.py
+import sys, os
+print "script: sys.argv[0] is", repr(sys.argv[0])
+print "script: __file__ is", repr(__file__)
+print "script: cwd is", repr(os.getcwd())
+import whereutils
+whereutils.show_where()
+ 
+C:\junk\so&gt;type \python26\lib\site-packages\whereutils.py
+import sys, os
+def show_where():
+    print "show_where: sys.argv[0] is", repr(sys.argv[0])
+    print "show_where: __file__ is", repr(__file__)
+    print "show_where: cwd is", repr(os.getcwd())
+ 
+C:\junk\so&gt;\python26\python scriptpath\script1.py
+script: sys.argv[0] is 'scriptpath\\script1.py'
+script: __file__ is 'scriptpath\\script1.py'
+script: cwd is 'C:\\junk\\so'
+show_where: sys.argv[0] is 'scriptpath\\script1.py'
+show_where: __file__ is 'C:\\python26\\lib\\site-packages\\whereutils.pyc'
+show_where: cwd is 'C:\\junk\\so'
