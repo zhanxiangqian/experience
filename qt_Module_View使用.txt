@@ -1,0 +1,16 @@
+纯虚类：
+
+QAbstractItemView
+
+QAbstractItemModel
+
+QAbstractItemDelegate
+
+虚类（以tableview为例）
+QTableView
+
+QAbstractTableModel
+
+QStyledItemDelegate
+
+具体用法见common.py、linear_static.py
