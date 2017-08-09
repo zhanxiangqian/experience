@@ -1,0 +1,6 @@
+进程间通信可以使用如下函数进行
+大概用法
+	pSolver = new QProcess(this);
+	connect(pSolver, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &SolverRcs::onProcessEnd);
+	pSolver->setProcessChannelMode(QProcess::ForwardedChannels);//设置进程的输入输出到主进程
+	pSolver->start(progrem, arg);

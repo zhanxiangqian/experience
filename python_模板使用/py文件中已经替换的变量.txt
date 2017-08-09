@@ -1,0 +1,42 @@
+﻿MOM:
+params_simu.MONOSTATIC_RCS = $MONOSTATIC_RCS
+params_simu.MONOSTATIC_SAR = $MONOSTATIC_SAR
+
+params_simu.COMPUTE_RCS_HH = $HH
+params_simu.COMPUTE_RCS_VV = $VV
+params_simu.COMPUTE_RCS_HV = $HV
+params_simu.COMPUTE_RCS_VH = $VH
+
+
+params_simu.theta_inc = $THETA_INC
+params_simu.phi_inc = $PHI_INC
+Polarisation = $POL
+
+params_simu.START_THETA = $START_THETA
+params_simu.STOP_THETA = $STOP_THETA
+
+# phis
+params_simu.START_PHI = $START_PHI
+params_simu.STOP_PHI = $STOP_PHI
+
+
+params_simu.pathToTarget = $GEOM_DIR
+params_simu.targetName = $TARGET_NAME
+
+
+FDTD;
+Sim_Path = $SIM_PATH;
+$STL_PATH
+SimBox = $SIM_BOX;2倍
+
+PW_Box = $PW_BOX;1.5倍
+nf2ff = CalcNF2FF(nf2ff, Sim_Path, f0, [$START_THETA:1:$STOP_THETA]*pi/180, [$START_PHI:1:STOP_PHI]*pi/180, 'Mode',1);
+
+PO:
+GEOM_NODE_PATH //包含文件名
+GEOM_FACE_PATH
+$START_THETA
+$STOP_THETA
+$START_PHI
+$STOP_PHI
+$RES_Path

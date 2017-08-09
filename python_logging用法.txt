@@ -1,0 +1,158 @@
+简单的范例
+#-*- coding: utf-8 -*-
+import logging
+"""logging的简单使用示例
+"""
+ 
+if __name__ == '__main__':
+    
+    # 最简单的用法，不推荐直接用logging模块
+    logging.debug(u'这个不会被打印出来')
+    logging.info(u'这个也不会被打印出来')
+    logging.warning(u'这个就会了，因为logging默认的级别是WARNING，低于这个等级的信息就会被忽略')
+ 
+稍微难一点的范例
+#-*- coding: utf-8 -*-
+import logging
+"""logging的使用示例
+"""
+ 
+if __name__ == '__main__':
+    
+    # python官方文档中提供的一段示例，使用logging模块产生logger对象
+    FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
+    logging.basicConfig(format = FORMAT)
+    d = { 'clientip' : '192.168.0.1', 'user' : 'fbloggs' }
+    # 创建一个日志对象
+    logger = logging.getLogger('tcpserver')
+    logger.warning('Protocol problem: %s', 'connection reset', extra = d)
+    # 设置级别
+    logger.setLevel(logging.DEBUG)   
+    logger.debug('Hello', extra = d)
+ 
+复杂一点的用法，为logger添加了若干个handler。
+#-*- coding: utf-8 -*-
+import logging, logging.config
+"""logging的使用示例
+"""
+ 
+if __name__ == '__main__':
+    
+    # 比较复杂的用法
+    LOGGING = {
+               # 版本，总是1
+               'version': 1,
+               'disable_existing_loggers': True,
+               'formatters': {
+                              'verbose': {'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'},
+                               'simple': {'format': '%(levelname)s %(message)s'},
+                               'default': {
+                                           'format' : '%(asctime)s %(message)s',
+                                           'datefmt' : '%Y-%m-%d %H:%M:%S'
+                                }
+                },
+               'handlers': {
+                            'null': {
+                                     'level':'DEBUG',
+                                     'class':'logging.NullHandler',
+                            },
+                            'console':{
+                                       'level':'DEBUG',
+                                       'class':'logging.StreamHandler',
+                                       'formatter': 'default'
+                            },
+                            'file': {
+                                     'level': 'INFO',
+                                     # TimedRotatingFileHandler会将日志按一定时间间隔写入文件中，并
+                                     # 将文件重命名为'原文件名+时间戮'这样的形式
+                                     # Python提供了其它的handler，参考logging.handlers
+                                     'class': 'logging.handlers.TimedRotatingFileHandler',
+                                     'formatter': 'default',
+                                     # 后面这些会以参数的形式传递给TimedRotatingFileHandler的
+                                     # 构造器
+ 
+                                     # filename所在的目录要确保存在
+                                     'filename' : 'log',
+                                     # 每5分钟刷新一下
+                                     'when' : 'M',
+                                     'interval' : 1,
+                                     'encoding' : 'utf8',
+                            }
+                },
+               'loggers' : {
+                            # 定义了一个logger
+                            'mylogger' : {
+                                          'level' : 'DEBUG',
+                                          'handlers' : ['console', 'file'],
+                                          'propagate' : True
+                            }
+                } 
+    }
+    logging.config.dictConfig(LOGGING)
+    logger = logging.getLogger('mylogger')
+    logger.info('Hello')
+    
+另外，还可以通过配置文件来配置logging，方法如下：
+配置文件（log_conf）：
+[loggers]
+keys=root,mylogger
+ 
+[handlers]
+keys=null,console,file
+ 
+[formatters]
+keys=verbose,simple,default
+ 
+[formatter_verbose]
+format=%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s
+datefmt=
+class=logging.Formatter
+ 
+[formatter_simple]
+format=%(levelname)s %(message)s
+datefmt=
+class=logging.Formatter
+ 
+[formatter_default]
+format=%(asctime)s %(message)s
+datefmt=%Y-%m-%d %H:%M:%S
+class=logging.Formatter
+ 
+[logger_mylogger]
+level=DEBUG
+handlers=console,file
+propagate=1
+qualname=
+ 
+[logger_root]
+level=NOTSET
+handlers=
+ 
+[handler_null]
+class=NullHandler
+level=DEBUG
+args=()
+ 
+[handler_console]
+class=StreamHandler
+level=DEBUG
+args=()
+ 
+[handler_file]
+class=handlers.TimedRotatingFileHandler
+level=INFO
+formatter=default
+args=('log','M',1,0,'utf8')
+ 
+Python代码：
+#-*- coding: utf-8 -*-
+import logging, logging.config
+"""logging的使用示例
+"""
+ 
+if __name__ == '__main__':
+    
+    # 使用配置文件
+    logging.config.fileConfig('log_conf')
+    logger = logging.getLogger('mylogger')
+    logger.info('Hello')
