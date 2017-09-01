@@ -36,7 +36,7 @@ SET(VTK_DIR ${Products}/Debug/VTK7.11/lib/cmake/vtk-7.1)  增加vtk的查找路径
 
 
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}  增加项目的包含路径
     ${CMAKE_CURRENT_BINARY_DIR}
 )
 
@@ -76,7 +76,7 @@ add_executable(${projectName}    生成exe项目
 )
 
 
-find_package(Qt5Core)    使用qt库 该用法将同时配置好debug和release
+find_package(Qt5Core)   注意：在target_link_libraries使用之前应该先使用add_executable，先定义projectName 使用qt库 该用法将同时配置好debug和release
 target_link_libraries(${projectName} Qt5::Core)
 
 find_package(Qt5Widgets)
