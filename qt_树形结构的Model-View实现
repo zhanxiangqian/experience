@@ -1,0 +1,232 @@
+﻿
+ 
+这个例子是将布尔表达式分析成一棵树。这个分析过程在离散数学中经常遇到，特别是复杂的布尔表达式，类似的分析可以比较方便的进行表达式化简、求值等一系列的计算。同样，这个技术也可以很方便的分析一个表达式是不是一个正确的布尔表达式。在这个例子中，一共有四个类：
+Node：组成树的节点；
+BooleaModel：布尔表达式的model，实际上是一个tree model，用于将布尔表达式表示成一棵树；
+BooleanParser：将布尔表达式生成分析树的分析器；
+BooleanWindow：输入布尔表达式并进行分析，展现成一棵树。
+这个例子可能是目前为止最复杂的一个了，所以先来看看最终的结果，以便让我们心中有数：
+ 
+
+ 
+先来看这张图片，我们输入的布尔表达式是!(a||b)&&c||d, 在下面的Node栏中，用树的形式将这个表达式分析了出来。如果你熟悉编译原理，这个过程很像词法分析的过程：将一个语句分析称一个一个独立的词素。
+ 
+我们从最底层的Node类开始看起，一步步构造这个程序。
+ 
+Node.h
+class Node 
+{ 
+public: 
+        enum Type 
+        { 
+                Root, 
+                OrExpression, 
+                AndExpression, 
+                NotExpression, 
+                Atom, 
+                Identifier, 
+                Operator, 
+                Punctuator 
+        }; 
+ 
+        Node(Type type, const QString &str = ""); 
+        ~Node(); 
+ 
+        Type type; 
+        QString str; 
+        Node *parent; 
+        QList<Node *> children; 
+}; 
+ 
+Node.cpp
+Node::Node(Type type, const QString &str) 
+{ 
+        this->type = type; 
+        this->str = str; 
+        parent = 0; 
+} 
+ 
+Node::~Node() 
+{ 
+        qDeleteAll(children); 
+}
+ 
+Node很像一个典型的树的节点：一个Node指针类型的parent属性，保存父节点；一个QString类型的str，保存数据。另外，Node里面还有一个Type属性，指明这个Node的类型，是一个词素，还是操作符，或者其他什么东西；children是一个QList<Node *>类型的列表，保存这个 node 的子节点。注意，在Node类的析构函数中，使用了qDeleteAll()这个全局函数。这个函数是将[start, end)范围内的所有元素进行delete。因此，它的参数的元素必须是指针类型的。并且，这个函数使用delete之后并不会将指针赋值为0，所以，如果要在析构函数之外调用这个函数，建议在调用之后显示的调用clear()函数，将所有子元素的指针清为0.
+ 
+在构造完子节点之后，我们开始构造model：
+ 
+booleanmodel.h
+class BooleanModel : public QAbstractItemModel 
+{ 
+public: 
+        BooleanModel(QObject *parent = 0); 
+        ~BooleanModel(); 
+ 
+        void setRootNode(Node *node); 
+ 
+        QModelIndex index(int row, int column, 
+                                            const QModelIndex &parent) const; 
+        QModelIndex parent(const QModelIndex &child) const; 
+ 
+        int rowCount(const QModelIndex &parent) const; 
+        int columnCount(const QModelIndex &parent) const; 
+        QVariant data(const QModelIndex &index, int role) const; 
+        QVariant headerData(int section, Qt::Orientation orientation, 
+                                                int role) const; 
+private: 
+        Node *nodeFromIndex(const QModelIndex &index) const; 
+ 
+        Node *rootNode; 
+};
+ 
+booleanmodel.cpp
+BooleanModel::BooleanModel(QObject *parent) 
+        : QAbstractItemModel(parent) 
+{ 
+        rootNode = 0; 
+} 
+ 
+BooleanModel::~BooleanModel() 
+{ 
+        delete rootNode; 
+} 
+ 
+void BooleanModel::setRootNode(Node *node) 
+{ 
+        delete rootNode; 
+        rootNode = node; 
+        reset(); 
+} 
+ 
+QModelIndex BooleanModel::index(int row, int column, 
+                                                                const QModelIndex &parent) const 
+{ 
+        if (!rootNode || row < 0 || column < 0) 
+                return QModelIndex(); 
+        Node *parentNode = nodeFromIndex(parent); 
+        Node *childNode = parentNode->children.value(row); 
+        if (!childNode) 
+                return QModelIndex(); 
+        return createIndex(row, column, childNode); 
+} 
+ 
+Node *BooleanModel::nodeFromIndex(const QModelIndex &index) const 
+{ 
+        if (index.isValid()) { 
+                return static_cast<Node *>(index.internalPointer()); 
+        } else { 
+                return rootNode; 
+        } 
+} 
+ 
+int BooleanModel::rowCount(const QModelIndex &parent) const 
+{ 
+        if (parent.column() > 0) 
+                return 0; 
+        Node *parentNode = nodeFromIndex(parent); 
+        if (!parentNode) 
+                return 0; 
+        return parentNode->children.count(); 
+} 
+ 
+int BooleanModel::columnCount(const QModelIndex & /* parent */) const 
+{ 
+        return 2; 
+} 
+ 
+QModelIndex BooleanModel::parent(const QModelIndex &child) const 
+{ 
+        Node *node = nodeFromIndex(child); 
+        if (!node) 
+                return QModelIndex(); 
+        Node *parentNode = node->parent; 
+        if (!parentNode) 
+                return QModelIndex(); 
+        Node *grandparentNode = parentNode->parent; 
+        if (!grandparentNode) 
+                return QModelIndex(); 
+ 
+        int row = grandparentNode->children.indexOf(parentNode); 
+        return createIndex(row, 0, parentNode); 
+} 
+ 
+QVariant BooleanModel::data(const QModelIndex &index, int role) const 
+{ 
+        if (role != Qt::DisplayRole) 
+                return QVariant(); 
+ 
+        Node *node = nodeFromIndex(index); 
+        if (!node) 
+                return QVariant(); 
+ 
+        if (index.column() == 0) { 
+                switch (node->type) { 
+                case Node::Root: 
+                         return tr("Root"); 
+                case Node::OrExpression: 
+                        return tr("OR Expression"); 
+                case Node::AndExpression: 
+                        return tr("AND Expression"); 
+                case Node::NotExpression: 
+                        return tr("NOT Expression"); 
+                case Node::Atom: 
+                        return tr("Atom"); 
+                case Node::Identifier: 
+                        return tr("Identifier"); 
+                case Node::Operator: 
+                        return tr("Operator"); 
+                case Node::Punctuator: 
+                        return tr("Punctuator"); 
+                default: 
+                        return tr("Unknown"); 
+                } 
+        } else if (index.column() == 1) { 
+                return node->str; 
+        } 
+        return QVariant(); 
+} 
+ 
+QVariant BooleanModel::headerData(int section, 
+                                                                    Qt::Orientation orientation, 
+                                                                    int role) const 
+{ 
+        if (orientation == Qt::Horizontal && role == Qt::DisplayRole) { 
+                if (section == 0) { 
+                        return tr("Node"); 
+                } else if (section == 1) { 
+                        return tr("Value"); 
+                } 
+        } 
+        return QVariant(); 
+}
+ 
+现在，我们继承了QAbstractItemModel。之所以不继承前面说的QAbstractListModel或者QAbstractTableModel，是因为我们要构造一个tree model，而这个model是有层次结构的。所以，我们直接继承了那两个类的基类。在构造函数中，我们把根节点的指针赋值为0，因此我们提供了另外的一个函数setRootNode()，将根节点进行有效地赋值。而在析构中，我们直接使用delete操作符将这个根节点delete掉。在setRootNode()函数中，首先我们delete掉原有的根节点，再将根节点赋值，然后调用reset()函数。这个函数将通知所有的view对界面进行重绘，以表现最新的数据。
+ 
+使用QAbstractItemModel，我们必须重写它的五个纯虚函数。首先是index()函数。这个函数在QAbstractTableModel或者QAbstractListModel中不需要覆盖，因此那两个类已经重写过了。但是，我们继承QAbstractItemModel时必须覆盖。这个函数的签名如下：
+ 
+virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const = 0;
+ 
+这是一个纯虚函数，用于返回第row行，第column列，父节点为parent的那个元素的QModelIndex对象。对于tree model，我们关注的是parent参数。看一下我们的实现：
+ 
+QModelIndex BooleanModel::index(int row, int column, 
+                                                                const QModelIndex &parent) const 
+{ 
+        if (!rootNode || row < 0 || column < 0) 
+                return QModelIndex(); 
+        Node *parentNode = nodeFromIndex(parent); 
+        Node *childNode = parentNode->children.value(row); 
+        if (!childNode) 
+                return QModelIndex(); 
+        return createIndex(row, column, childNode); 
+}
+ 
+如果rootNode或者row或者column非法，返回一个非法的QModelIndex。然后使用nodeFromIndex()函数取得索引为parent的节点，然后我们使用children属性(这是我们前面定义的Node里面的属性)获得子节点。如果子节点不存在，返回一个非法值。最后，当是一个有效值时，由createIndex()函数返回有效地QModelIndex对象。
+ 
+对于具有层次结构的model来说，只有row和column值是不能确定这个元素的位置的，因此，QModelIndex中除了row和column之外，还有一个void*或者int的空白属性，可以存储一个值。在这里我们就把父节点的指针存入，这样，就可以由这三个属性定位这个元素。因此，createIndex()中第三个参数就是这个内部的指针。所以我们自己定义一个nodeFromIndex()函数的时候要注意使用QModelIndex的internalPointer()函数获得这个内部指针，从而定位我们的node。
+ 
+后面的rowCount()和columnCount()这两个函数比较简单，就是要获得model的行和列的值。由于我们的model定义成2列，所以在columnCount()函数中始终返回2.
+ 
+parent()函数要返回子节点的父节点的索引，我们要从子节点开始寻找，直到找到父节点的父节点，这样就能定位到父节点，从而得到子节点的位置。而data()函数要返回每个单元格的返回值，经过前面两个例子，我想这个函数已经不会有很大的困难了的。headerData()函数返回列头的名字，同前面一样，这里就不再赘述了。
+ 
+前面的代码很长，BooleanWindow部分就很简单了。就是把整个view和model组合起来。另外的一个BooleanParser类没有什么GUI方面的代码，是纯粹的算法问题。如果我看得没错的话，这里应该使用的是编译原理里面的递归下降词法分析，有兴趣的朋友可以到网上查一下相关的资料。我想在以后的《自己动手写编译器》中再详细介绍这个算法。
+ 

@@ -60,6 +60,12 @@ qt5_wrap_cpp(__Module_MOC_HDRS ${Module_HDRS})  ╫╚mocнд╪ЧйДЁЖ╣╫р╩╦Ж╠Да©жпё╛╠Цсзй
 
 #aux_source_directory(post post_SRCS)  вт╤╞╡Иурб╥╬╤║╟post║╠об╣дт╢нд╪Ч╣╫╠Да©post_SRCS
 
+FILE(GLOB SRC_FILES ${ROOT_DIR}/*.cpp) 
+#м╛юМё╛╡Иур╣╠г╟нд╪Ч╪пжпкЫсп╣дм╥нд╪Ч
+FILE(GLOB HEAD_FILES ${ROOT_DIR}/*.h) 
+#м╛юМё╛╡Иур╣╠г╟нд╪Ч╪пжпкЫсп╣дuiнд╪Ч
+FILE(GLOB UI_FILES ${ROOT_DIR}/*.ui) 
+
 ##vs filter
 SOURCE_GROUP("main" FILES      тЖ╪снд╪Чи╦я║
     ${main_SRCS}

@@ -1,0 +1,40 @@
+view使用qt提供的可视类QTreeView
+model继承自QAbstractItemModel
+实现见
+uftreemodel.cpp/h
+
+测试用例参见如下
+	UfTreeObject* obj = new UfTreeObject();
+	obj->setEntry("obj");
+	UfTreeObject* obj1 = new UfTreeObject();
+	obj1->setEntry("obj1");
+	UfTreeObject* obj2 = new UfTreeObject();
+	obj2->setEntry("obj2");
+
+	UfTreeObject* obj3 = new UfTreeObject();
+	obj3->setEntry("obj3");
+
+	obj->appendChild(obj1);
+	obj->appendChild(obj2);
+	obj->appendChild(obj3);
+
+	UfTreeObject* childObj11 = new UfTreeObject();
+	childObj11->setEntry("childObj11");
+	UfTreeObject* childObj21 = new UfTreeObject();
+	childObj21->setEntry("childObj21");
+
+	UfTreeObject* childObj31 = new UfTreeObject();
+	childObj31->setEntry("childObj31");
+
+	UfTreeObject* childObj111 = new UfTreeObject();
+	childObj111->setEntry("childObj111");
+
+	obj1->appendChild(childObj11);
+	obj2->appendChild(childObj21);
+	obj3->appendChild(childObj31);
+	childObj11->appendChild(childObj111);
+	UfTreeModel *model = new UfTreeModel(obj);
+	UfTreeView* view = new UfTreeView();
+	view->setModel(model);
+	view->setSelectionMode(QAbstractItemView::ExtendedSelection);  // enable extended selection mode
+	view->show();
