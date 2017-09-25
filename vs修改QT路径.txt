@@ -1,0 +1,6 @@
+.vcxproj中有记录qtdir这个宏
+在小组开发的过程中，不同人的环境导致这个宏记录的位置不一致
+
+修改这个宏的入口在QT vs 的插件中，选择qt project setting，设置version后保存退出
+在解决方案最顶端右键后选择Change Solution Qt version到相应版本即可
+即可

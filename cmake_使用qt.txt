@@ -82,23 +82,9 @@ add_executable(${projectName}    生成exe项目
 )
 
 
-find_package(Qt5Core)   注意：在target_link_libraries使用之前应该先使用add_executable，先定义projectName 使用qt库 该用法将同时配置好debug和release
-target_link_libraries(${projectName} Qt5::Core)
 
-find_package(Qt5Widgets)
-target_link_libraries(${projectName} Qt5::Widgets)
-
-find_package(Qt5Gui)
-target_link_libraries(${projectName} Qt5::Gui)
-
-find_package(Qt5OpenGL)
-target_link_libraries(${projectName} Qt5::OpenGL)
-
-find_package(Qt5Xml)
-target_link_libraries(${projectName} Qt5::Xml)
-
-find_package(Qt5Charts)
-target_link_libraries(${projectName} Qt5::Charts)
+find_package(Qt5Core)   注意：在target_link_libraries使用之前应该先使用add_executable，先定义projectName 使用qt库 该用法将同时配置好debug和
+qt5_use_modules()qt5_use_modules(${projectName} Core Gui Widgets OpenGL Xml Charts)
 
 
 #link

@@ -1,0 +1,4 @@
+QTextCodec* cod=QTextCodec::codecForLocale();
+QLabel* lab=new QLabel;
+lab->setText(cod->toUnicode("Ω "));
+// qt使用的是unicode编码，，不是使用的本地的编码。所以除了英文字母外，其他的都需要转换。首先产生一个本地解码器 cod ，然后用该解码器对"Ω "解码，并将其转换为unicode码，这样就能正常显示了

@@ -40,3 +40,4 @@ VS由此两行内容获得QTDIR路径，前加入运行环境中。
 由于Qt4没有将QTDIR保存到.vcxproj.user中，所以，也会弹出error MSB6006: "cmd.exe" exited with code 3.错误。
 
 解决办法，只需要将上面的两行内容加入新生成的vcxproj.user文件中的对应位置即可
+也可使用Qt插件,修改方法见vs修改Qt路径.txt
