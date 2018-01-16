@@ -1,0 +1,1 @@
+static_cast<void(Qtitan::RibbonBar::*)(Qtitan::RibbonPage*)>(&Qtitan::RibbonBar::currentPageChanged)

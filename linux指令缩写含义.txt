@@ -1,0 +1,114 @@
+目录名
+/boot 引导.开机
+/root
+/lost+found
+/run
+/home
+/etc : etcetera 附加物,等等等
+/bin : binary 二进制
+/dev : device 设备
+/lib : library
+/mnt : mount  挂载/安装
+/proc : process 进程
+/tmp  : 
+/var : variable 变数
+/srv : services 
+/opt : option
+/sbin : super bin
+/sys : system
+/usr : Unix Software Resources
+
+
+文件管理
+ls : list
+cd : change directory
+pwd : print working directory
+cp  : copy
+mv  : move
+rm  : remove
+pushd : push to directory
+popd  : pop from directory
+mkdir : make dir
+rmdir :
+cat   : 显示或者把多个文本文件连接起来。cat是concatenate的简写，类似于dos下面的type命令。
+sed   : stream editor
+diff  : difference
+wc    : word count
+chmod : change mode  变更文件或目录的权限
+chown : change owner
+chgrp : change group
+awk   : Aho Weinberger and Kernighan(人名) AWK是一种用于处理文本的编程语言工具。AWK在很多方面类似于Unix shell编程语言
+gawk  : awk的GNU版本
+ln    : link
+tar   : tarball  包
+
+
+硬件管理
+df   : disk free 检查文件系统的磁盘空间占用情况
+du   : disk usage
+dd   : 一说是Convert and Copy， 但是cc被用掉了，就用dd了 作用是用指定大小的块拷贝一个文件并在拷贝的同时进行指定的转换
+parted : partition editor
+
+软件及软件包
+man : manual 手册Linux带有联机帮助功能，它的帮助文件称为联机帮助页(man pages)．要想找某一个命令的详细信息，比如ls命令，只要在命令行输入man后跟随空格及ls．然后回车就可以了
+apt : advanced packaging tool  安装包管理工具,是一个客户/服务器系统
+dpkg : Debian Package “Debian” 专门开发的套件管理系统，方便软件的安装、更新及移除。所有源自“Debian”的“Linux ”发行版都使用 “dpkg”，例如 “Ubuntu”、“Knoppix ”等
+yum : Yellow dog Updater, Modified
+rpm : Redhat Package Manager
+
+系统管理
+depmod : depend module
+lsmod  : list module
+modprobe : module probe
+modeinfo : module infomation
+insmod   : insert module
+rmmod    : remove module
+ps       : peocess status
+su       : substitute user
+bash     : bourne again shell / born again 双关
+init 
+ssh      : secure shell
+wine     : Wine (Wine Is Not an Emulator)[即Wine不是一个模拟器]是一个在Linux和UNIX之上的,Windows 3.x和 Windows APIs的实现。注意，Wine不是Windows模拟器，而是运用API转换技术实做出Linux对应到Windows相对应的函数来调用DLL以运行Windows程序
+exec  
+fstab    : FileSystem table
+passwd
+tty      : teletype
+
+sudo     : superuser do
+grub     : Grand Unified Bootloader Linux全家桶启动就靠它了
+tzselect : Time Zone SELECT
+sync     : Synchronize 同步
+
+编辑器
+ed       : edit
+nano     : Nano's ANOther editor  nano的目标是类似Pico的全功能但又易于使用的编辑器
+emacs    : Editor macros 编辑宏
+vi       : visual 视觉资料
+vim      : vi improved vi的改进 类似于Vi的著名的功能强大、高度可定制的文本编辑器，在Vi的基础上改进和增加了很多特性
+
+编程相关
+cc       : c compiler
+gcc      : gnu c compiler 
+g++      : Gnu c++ compiler   g++只是调用gcc，然后连接c++的库，并且作相应的一些编译设置而已
+gcj      : for java
+yacc     : 其他编译器
+php      : PHP：Hypertext Preprocessor 
+ld       : link edit 担心跟表示“小于等于”的 le 重名故此用ld
+gdb      : gnu debug
+tcl      : Tool Command Language TCL (最早称为“工具命令语言”"Tool Command Language",，但是现在已经不是这个含义，不过我们仍然称呼它为TCL)是一种 脚本语言
+
+图形界面
+gnome    : gnu Object Model Environment
+gdm      : Gnome Display Manager
+qt       : 
+kde      : K Desktop Environment
+lxde     : Lightweight X11 Desktop Environment
+xfce     : XForms Common Environment
+
+许可证
+gnu gpl : Gnu General Public License
+gnu lgpl : Gnu General Lesser Public License
+gfdl : Gnu Free Documentation License
+agpl : Affero General Public License（或简写为Affero gpl)
+apsl : Apple Public Source License
+bsd : Berkeley Software Distribution license
