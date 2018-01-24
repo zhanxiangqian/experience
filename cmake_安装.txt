@@ -1,0 +1,50 @@
+1 安装库及可执行文件
+ 最常用的參數是 DESTINATION，用以指定安裝的目的地。假如我們有 app、calc-s、calc 三個 target，install() 指令通常寫起來像這樣：
+
+  install(TARGETS app calc calc-s
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib/static
+        PUBLIC_HEADER DESTINATION include
+        )
+  有了install 指令 CMake 會幫我們在 makefile 當中產生 install 的 rule，當我們執行完 make install 之後，這些 target 所生成的執行檔或 dll會跑  到安裝路徑下的 bin，靜態程式庫會跑到 lib/static，而so會跑到 lib 資料夾下。如果有指定 target 的 PUBLIC_HEADER 屬性，指定的 header 也會自己安裝到 include 資料夾下。
+
+可是到底安裝到哪裡去了呢？安裝路徑由全域變數 CMAKE_INSTALL_PREFIX 控制。在 Windows 上預設是
+
+C:\Program Files\
+在 Unix-like 系統預設是
+
+/usr/local/
+我們可以在 CMakeLists 當中直接用 set() 設定 CMAKE_INSTALL_PREFIX 值，不過留到執行 cmake 再由命令列指定會比較有彈性。
+
+cmake -DCMAKE_INSTALL_PREFIX="d:/my_precious
+
+
+2安装其他文件
+
+    這個功能會將來源目錄下的內容以樹狀方式複製至 DESTINATION 指定的目錄，請注意下面兩者來源目錄最後斜線的差別：
+
+# 会将目录复制成为 dst/src/{subdirs and files...}
+install(DIRECTORY   myproj/src
+        DESTINATION dst)
+
+# 会将目录复制成为 dst/{subdirs and files...}
+install(DIRECTORY   myproj/src/
+        DESTINATION dst)
+對 Linux 使用者而言這樣的行為應該很熟悉。
+
+
+參數 FILES_MATCHING 用於指定操作檔案的條件，可以使用 PATTERN 或 REGEX 兩種比對方式，要注意 PATTERN 會比對全路徑而不只是檔名。
+
+install(DIRECTORY src/ DESTINATION include
+        FILES_MATCHING PATTERN "*.h")
+以上會把 src/ 底下所有副檔名為 .h 的檔案複製到 include 資料夾下，並且會保留原本目錄樹的架構。
+
+在比對條件後面接 EXCLUDE 可用來排除符合條件的檔案或目錄，使其被 install 忽略。
+
+install(DIRECTORY myapp/ mylib DESTINATION myproj
+        PATTERN ".git" EXCLUDE
+        )
+myapp 的內容會被複製到 myproj 下
+mylib 的內容會被複製到 myproj/mylib 下
+所有完整路徑中包含「.git」的檔案或目錄都不會被複製，例如 myapp/.git/branches 等等。

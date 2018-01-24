@@ -1,0 +1,9 @@
+1 管道: 指令符号 | 
+  作用: 将一条命令的输出链接到另一条命令的输入
+  如:  ls | grep gcc
+  
+  
+Ubuntu 桌面环境默认为unity
+软件中心 software-center 可以通过apt安装
+新力得   synaptic apt的图形界面	     可以通过apt安装
+ctrl + alt + backspace 可以重启xwindow程序

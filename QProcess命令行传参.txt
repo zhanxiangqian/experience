@@ -1,0 +1,3 @@
+QProcess process;
+process.start("del /s *.txt");
+//µÈÍ¬ÓÚprocess.start("del", QStringList() << "/s" << "*.txt");

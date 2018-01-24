@@ -42,7 +42,9 @@ gawk  : awk的GNU版本
 ln    : link
 tar   : tarball  包
 
-
+常用程序
+grep  : Globally search a Regular Expression and Print
+egrep : extended grep 
 硬件管理
 df   : disk free 检查文件系统的磁盘空间占用情况
 du   : disk usage
@@ -112,3 +114,17 @@ gfdl : Gnu Free Documentation License
 agpl : Affero General Public License（或简写为Affero gpl)
 apsl : Apple Public Source License
 bsd : Berkeley Software Distribution license
+
+常用参数;
+-r  : recursive/reverse  递归/逆序
+u owner
+o other
+g group
+1 x 执行
+2 w 写
+4 r 读
+
+-x  extract 提取
+
+
+
