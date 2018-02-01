@@ -1,0 +1,14 @@
+在qt当中标准输入输出中使用stdout stdin stderr等io表示
+如果想把信息通过QProcess获取
+需要把信息写入到stdout 或者是stderr中
+通过QProcess::readAllStandardOutput
+    QProcess::readAllStandardError
+    获得
+通过qt写入标准输出的方式可以使用QTextStream ts(stdout);
+ts<<"out";
+ts.flush();
+的方式写入
+也可以通过std::out << "out" <<endle;的方式
+
+值得一提的是qDebug(const char *message, ...)在Linux中会输出到stderr,但在Windows中,在有控制台的情况下
+会输出到控制台,没有控制台的情况下会输出到debugger.故此QProcess::readAllStandardError得不到子进程的输出信息
