@@ -1,0 +1,55 @@
+QT的入口函数是main，VS下运行QT界面 会弹出一个黑黑的控制台窗口，怎么去掉这控制台窗口呢？
+
+我找到两种办法去掉Console窗口。
+
+方法一、修改QT的project文件
+
+这种方法时候其他OS平台。我的project文件为test.pro，去掉其中的
+
+CONFIG  += console release
+
+也可以改成 CONFIG += release
+
+然后使用命令：
+
+C:\qt\qmake -makefile
+
+C:\qt\nmake
+
+重新编译好之后再次运行，你会发现黑黑的Console窗口没有了。
+
+方法二、VS2008中修改项目参数
+
+打开test.sln之后，在项目的属性页，“配置属性”/“链接器”/“系统”中“子系统”选择“Windows（/SUBSYSTEM:WINDOWS）原先为“控制台(/SUBSYSTEM:CONSOLE)”
+
+如果只修改这一项，重新编译的时候会报这样的错误：
+
+MSVCRTD.lib(crtexew.obj) : error LNK2019: 无法解析的外部符号 _WinMain@16，该符号在函数 ___tmainCRTStartup 中被引用
+
+需要在“高级”选项中添加“入口点”：mainCRTStartup
+
+再次编译就OK了。
+
+有关VS环境下如何去掉CONSOLE，参考：
+
+作系统装载应用程序后，做完初始化工作就转到程序的入口点执行。程序的默认入口点实际上是由连接程序设置的，不同的连接器选择的入口函数也不尽相 同。在VC下，连接器对控制台程序设置的入口函数是 mainCRTStartup，mainCRTStartup 再调用你自己编写的 main 函数；对图形用户界面（GUI）程序设置的入口函数是 WinMainCRTStartup，WinMainCRTStartup 调用你自己写的 WinMain 函数。
+具体设置哪个入口点是由连接器的“/subsystem:”选项参数确定的，它告诉操作系统如何运行编译生成的.EXE 文件。可以指定四种方式：“CONSOLE|WINDOWS|NATIVE|POSIX”如果这个选项参数的值为“WINDOWS”，则表示该应用程序运 行时不需要控制台，有关连接器参数选项的详细说明请参考 MSDN 库。
+下面我们将通过预编译指令来对编译器和连接器进行设置，从而达到我们的目的：例子代码运行后播放Windows系统启动声音三次，然后退出，运行后不会显示控制台窗口。
+
+#include <windows.h>
+#include <mmsystem.h>
+
+#pragma comment(lib,"winmm.lib") // 告诉连接器与这个库连接，因为我们要播放多媒体声音
+#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) // 设置连接器选项
+
+int main(void)
+{
+  PlaySound("SystemStart",NULL, SND_ALIAS|SND_SYNC);
+  Sleep(50);
+  PlaySound("SystemStart",NULL, SND_ALIAS|SND_SYNC);
+  Sleep(50);
+  PlaySound("SystemStart",NULL, SND_ALIAS|SND_SYNC);
+  Sleep(50);
+
+  return 0;
+}

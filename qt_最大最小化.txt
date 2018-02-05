@@ -1,0 +1,29 @@
+Qt除了提供信号和槽来触发窗体的动作以外，还提供了一些event函数。
+
+针对该问题的解决方法为：
+
+mainwindow.h中
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+................
+protected:
+    void changeEvent(QEvent * event);
+
+................
+};
+
+
+mainwindow.cpp中定义该事件函数：
+
+
+
+void MainWindow::changeEvent(QEvent *event)
+{
+    if(event->type()!=QEvent::WindowStateChange) return;
+    if(this->windowState()==Qt::WindowMaximized)
+    {
+       ................//需要处理的功能
+    }
+}

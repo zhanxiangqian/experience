@@ -1,0 +1,15 @@
+用CMake屏蔽Release运行时的控制台窗口
+在默认情况下，CMake构建的VS工程运行时会弹出控制台窗口，可以通过手动方式进行屏蔽，也可以通过CMake命令进行屏蔽。
+
+手动方式：分为两步
+
+第一步：右击VS项目，选择“属性”—》“连接器”—》“子系统”—》“窗口（/SUBSYSTEM:WINDOES）”
+
+第二步：选择“属性”—》“连接器”—》“高级”—》“入口点”，设置内容“mainCRTStartup”
+
+这种方式的缺点是用CMake重新Generate工程的时候，问题会重新出现。
+
+CMake命令方式可以完美解决这个问题：
+
+Set_Target_Properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS_RELEASE "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+需要注意的是这两个命令不能分开设置。
