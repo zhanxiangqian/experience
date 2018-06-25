@@ -1,0 +1,34 @@
+QProcess process;
+process.start("del /s *.txt");
+//等同于process.start("del", QStringList() << "/s" << "*.txt");
+
+
+
+命令行参数如下：
+E:/GeomDataExport/GeomDataExport.exe InputFile="C:/Users/hp/Desktop/Model_original/BoxCylinder.stp" ExportPath="E:/xxxxxx/Geom/Stl123" LinDeflection=0.5 IsExportStl=false
+或
+E:/GeomDataExport/GeomDataExport.exe InputFile="C:/Users/hp/Desktop/Model_original/BoxCylinder.step" ExportPath="E:/xxxxxx/Geom/Stl123" LinDeflection=0.5 IsExportStl=false
+
+E:/GeomDataExport/GeomDataExport.exe InputFile="C:/Users/hp/Desktop/Model_original/hwjt_asmsss.igs" ExportPath="E:/xxxxxx/Geom/Stl456" LinDeflection=0.5 IsExportStl=false
+或
+E:/GeomDataExport/GeomDataExport.exe InputFile="C:/Users/hp/Desktop/Model_original/hwjt_asmsss.iges" ExportPath="E:/xxxxxx/Geom/Stl456" LinDeflection=0.5 IsExportStl=false
+
+参数说明：
+InputFile：stp或igs文件路径，用英文""包含文件路径；
+ExportPath：输出fstl文件路径，用英文""包含文件路径；
+LinDeflection：获取三角面片时使用，默认为0.5，取值范围一般为0-1.若几何模型非常大，可适当将该值放宽至1-2.该值越大生成的三角面片越大；
+IsExportStl：是否输出stl文件。默认为false，不输出stl文件；true，输出stl文件。
+
+写法如下
+	QString parentexe = QCoreApplication::applicationDirPath();
+	QString program = parentexe + "/GeomDataExport/GeomDataExport.exe";
+	QStringList args;
+	QString tmpDir = getTmpDir().path();
+
+	QString inFile = QString("InputFile=%1").arg(stp);
+	QString outFile = QString("ExportPath=%1").arg(tmpDir);
+	QString linDef = QString("LinDeflection=0.5");
+	QString isExpStl = QString("IsExportStl=false");
+
+	args << inFile << outFile << linDef << isExpStl;
+	getFstlProcess()->start(program, args);

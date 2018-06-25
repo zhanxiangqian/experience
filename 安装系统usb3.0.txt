@@ -1,0 +1,26 @@
+请选择对应系统的文件下载运行。
+
+Win7-USB3.0-creator-V3.zip - 用于 Admin Windows8.1 或 Windows10 的系统安装；Win7-USB3.0-creator-V3-Win7admin.zip 用于与 Windows7admin 系统安装。
+
+2
+从Intel官网下载Windows7 USB3.0 Creator 实用程序
+
+3
+使用Windows 7 USB DVD Download Tool或者软碟通（UltraISO）制作Win7原版安装盘。（不要使用ghost镜像制作，否则后续会有报错。）
+
+4
+解压缩之前下载的软件，在解压缩路径下右键以管理员方式运行Installer_Creator.exe 。
+
+5
+在弹出界面中点击右侧的选择按钮，选中U盘所在分区。
+
+6
+点击Create Image开始往U盘中添加程序，过程会比较长，Intel官方数据是15分钟，实测超过20分钟。
+
+7
+在出现Upadte finished！后创建结束，现在就可以使用这个U盘在USB 3.0接口上安装系统了。
+
+8
+使用安装完补丁的U盘安装完系统USB3.0驱动会自动安装上。
+
+注：如按照上述方式安装Win7后，出现进入系统无法识别USB设备（例如U盘），请更换USB3.0制作工具尝试。

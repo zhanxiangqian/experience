@@ -1,0 +1,21 @@
+重写 QWidget 的被保护的虚函数 void QWidget::contextMenuEvent ( QContextMenuEvent * event ) [virtual protected]，设置 QWidget 的 contextMenuPolicy 属性为 Qt::DefaultContextMenu 值，其实默认就是这个值，不用显示设置。
+
+   1: MyWidget::MyWidget(QWidget *parent)
+   2:     : QWidget(parent)
+   3: {
+   4:     setWindowTitle(tr("Context Menu Show 2"));
+   5:     setContextMenuPolicy(Qt::DefaultContextMenu); //其实不用设置，默认就是这个值
+   6: }
+   7: 
+   8: 
+   9: void MyWidget::contextMenuEvent(QContextMenuEvent *event)
+  10: {
+ 	QMenu *menu = new QMenu(this);
+	QAction* actClear = new QAction(tr("Clear"));
+	connect(actClear, &QAction::triggered, this, &CreateForeceDialog::clearSets);
+	menu->addAction(actClear);
+// 	menu->move(cursor().pos()); 
+  	menu->exec(event->globalPos());
+	menu->deleteLater();
+
+  17: }

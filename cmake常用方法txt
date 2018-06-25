@@ -61,6 +61,8 @@ AFTER 或者 BEFORE 指定了要添加的路径是添加到原有包含列表之
 解释
 命令：aux_source_directory(<dir> <variable>)
 
+file(GLOB UI_FILES *.ui ${CMAKE_CURRENT_SOURCE_DIR}/Post/*.ui)
+
 作用：查找dir路径下的所有源文件，保存到variable变量中.
 
 上面的例子中，hello_src是一个自定义变量，在执行了aux_source_directory(./src ${hello_src})之后，我就可以像这样来添加一个可执行文件：add_executable(hello ${hello_src}), 意思是用hello_src里面的所有源文件来构建hello可执行程序, 不用手动列出src目录下的所有源文件了。
