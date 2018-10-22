@@ -1,4 +1,4 @@
-﻿# coding:utf-8
+# -*- coding:utf-8 -*-
 class GrandPa():
     def __init__(self):
         print('I\'m GrandPa')
@@ -18,11 +18,14 @@ class Son(Father):
 import chardet
 
 if __name__ == '__main__':
-    """son = Son()
-    aa = 'abcd我'
+    son = Son()
+    aa = 'abcd我' #没有加u 转换为Unicode对象
     print aa
     print chardet.detect(aa)
     # 类型帮助信息 
+    chinese = '类型帮助信息: '
+    print chinese
+    print chardet.detect(chinese)
     print u'类型帮助信息: ', Son.__doc__
     #类型所继承的基类
     print u'类型所继承的基类:',Son.__bases__
@@ -37,7 +40,7 @@ if __name__ == '__main__':
     print u'类型:',GrandPa().__class__    
     print u'父类型:',GrandPa.__bases__    
     print u'类型:',isinstance(GrandPa(),object)
-    print u'type类型:',type(GrandPa())"""
+    print u'type类型:',type(GrandPa())
     aa = [[11,12,12],[21,22,23],[31,32,33]]
     aa[0][1] &= 1
     
