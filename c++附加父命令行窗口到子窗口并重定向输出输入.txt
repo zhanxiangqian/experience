@@ -1,0 +1,13 @@
+	FILE* stdInFile;
+	FILE* stdOutFile;
+
+	if (AttachConsole(ATTACH_PARENT_PROCESS))
+	{
+		QMessageBox::information(NULL, "Console", "attach to parent succeed");
+		freopen_s(&stdInFile, "CONIN$", "w+t", stdin);
+		freopen_s(&stdOutFile,"CONOUT$", "w+t", stdout);
+// 		freopen("CONIN$", "r+t", stdin);
+// 		freopen("CONOUT$", "r+t", stdout);
+
+		fclose(stdInFile);
+	}

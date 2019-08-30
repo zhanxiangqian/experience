@@ -1,0 +1,5 @@
+myWidget -> setStatusTip ("StatusTip");//状态栏提示
+myWidget -> setToolTip ("ToolTip");    //鼠标放到控件上，浮动出一个小黄框。
+myWidget -> setWhatsThis ("WhatsThis");//QDialog 标题栏上有一个？按钮，先点按钮鼠标变问号，再点控件。
+
+QString 可以采用富文本的格式输入,如基于html的	m_lineEditStartTime->setToolTip("<html><head/><body><p><img src=\":uframe/point.png\"/></p></body></html>");

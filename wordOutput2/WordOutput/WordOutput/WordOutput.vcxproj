@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8C62C523-7710-4B89-B9F3-4BB7E149677E}</ProjectGuid>
+    <RootNamespace>WordOutput</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0804</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CAccessField.h" />
+    <ClInclude Include="CAccessObject.h" />
+    <ClInclude Include="CAccessObjectProperties.h" />
+    <ClInclude Include="CAccessObjectProperty.h" />
+    <ClInclude Include="CAccessProperty.h" />
+    <ClInclude Include="CAdditionalData.h" />
+    <ClInclude Include="CAddTileUIReceiver.h" />
+    <ClInclude Include="CAllObjects.h" />
+    <ClInclude Include="CApplication.h" />
+    <ClInclude Include="CAttachment.h" />
+    <ClInclude Include="CAutoCorrect.h" />
+    <ClInclude Include="CBoundObjectFrame.h" />
+    <ClInclude Include="CCheckbox.h" />
+    <ClInclude Include="CChildren.h" />
+    <ClInclude Include="CCombobox.h" />
+    <ClInclude Include="CCommandButton.h" />
+    <ClInclude Include="CControl.h" />
+    <ClInclude Include="CControls.h" />
+    <ClInclude Include="CCurrentData.h" />
+    <ClInclude Include="CCurrentProject.h" />
+    <ClInclude Include="CCustomControl.h" />
+    <ClInclude Include="CDataAccessPage.h" />
+    <ClInclude Include="CDataAccessPages.h" />
+    <ClInclude Include="CDefaultWebOptions.h" />
+    <ClInclude Include="CDependencyInfo.h" />
+    <ClInclude Include="CDependencyObjects.h" />
+    <ClInclude Include="CDesignerReceiver.h" />
+    <ClInclude Include="CDispAttachmentEvents.h" />
+    <ClInclude Include="CDispBoundObjectFrameEvents.h" />
+    <ClInclude Include="CDispCheckBoxEvents.h" />
+    <ClInclude Include="CDispChildLabelEvents.h" />
+    <ClInclude Include="CDispComboBoxEvents.h" />
+    <ClInclude Include="CDispCommandButtonEvents.h" />
+    <ClInclude Include="CDispControlInReportEvents.h" />
+    <ClInclude Include="CDispCustomControlEvents.h" />
+    <ClInclude Include="CDispCustomControlInReportEvents.h" />
+    <ClInclude Include="CDispEmptyCellEvents.h" />
+    <ClInclude Include="CDispImageEvents.h" />
+    <ClInclude Include="CDispLabelEvents.h" />
+    <ClInclude Include="CDispLineEvents.h" />
+    <ClInclude Include="CDispListBoxEvents.h" />
+    <ClInclude Include="CDispNavigationButtonEvents.h" />
+    <ClInclude Include="CDispNavigationControlEvents.h" />
+    <ClInclude Include="CDispObjectFrameEvents.h" />
+    <ClInclude Include="CDispOptionButtonEvents.h" />
+    <ClInclude Include="CDispOptionGroupEvents.h" />
+    <ClInclude Include="CDispPageBreakEvents.h" />
+    <ClInclude Include="CDispPageEvents.h" />
+    <ClInclude Include="CDispPageHdrFtrInReportEvents.h" />
+    <ClInclude Include="CDispPaletteButtonEvents.h" />
+    <ClInclude Include="CDispRectangleEvents.h" />
+    <ClInclude Include="CDispSectionEvents.h" />
+    <ClInclude Include="CDispSectionInReportEvents.h" />
+    <ClInclude Include="CDispSubFormEvents.h" />
+    <ClInclude Include="CDispSubReportEvents.h" />
+    <ClInclude Include="CDispTabControlEvents.h" />
+    <ClInclude Include="CDispTextBoxEvents.h" />
+    <ClInclude Include="CDispToggleButtonEvents.h" />
+    <ClInclude Include="CDispWebBrowserControlEvents.h" />
+    <ClInclude Include="CDoCmd.h" />
+    <ClInclude Include="CDummy.h" />
+    <ClInclude Include="CEmptyCell.h" />
+    <ClInclude Include="CEntities.h" />
+    <ClInclude Include="CEntity.h" />
+    <ClInclude Include="CForm.h" />
+    <ClInclude Include="CForm2.h" />
+    <ClInclude Include="CForm3.h" />
+    <ClInclude Include="CFormatCondition.h" />
+    <ClInclude Include="CFormatConditions.h" />
+    <ClInclude Include="CFormEvents2.h" />
+    <ClInclude Include="CForms.h" />
+    <ClInclude Include="CGroupLevel.h" />
+    <ClInclude Include="CHyperlink.h" />
+    <ClInclude Include="CImage0.h" />
+    <ClInclude Include="CItemsSelected.h" />
+    <ClInclude Include="CLabel.h" />
+    <ClInclude Include="CLine.h" />
+    <ClInclude Include="CListBox0.h" />
+    <ClInclude Include="CLocalVar.h" />
+    <ClInclude Include="CLocalVars.h" />
+    <ClInclude Include="CMacroError.h" />
+    <ClInclude Include="CModule.h" />
+    <ClInclude Include="CModules.h" />
+    <ClInclude Include="CmportExportSpecification.h" />
+    <ClInclude Include="CmportExportSpecifications.h" />
+    <ClInclude Include="CNavigationButton.h" />
+    <ClInclude Include="CNavigationControl.h" />
+    <ClInclude Include="CObjectFrame.h" />
+    <ClInclude Include="COperation.h" />
+    <ClInclude Include="COperations.h" />
+    <ClInclude Include="COptionButton.h" />
+    <ClInclude Include="COptionGroup.h" />
+    <ClInclude Include="CPage.h" />
+    <ClInclude Include="CPageBreak.h" />
+    <ClInclude Include="CPages.h" />
+    <ClInclude Include="CPaletteButton.h" />
+    <ClInclude Include="CPrinter0.h" />
+    <ClInclude Include="CPrinters.h" />
+    <ClInclude Include="CProperties.h" />
+    <ClInclude Include="CRecordsetEvents.h" />
+    <ClInclude Include="CRectangle.h" />
+    <ClInclude Include="CReference.h" />
+    <ClInclude Include="CReferences.h" />
+    <ClInclude Include="CReferences_Events.h" />
+    <ClInclude Include="CReport.h" />
+    <ClInclude Include="CReport2.h" />
+    <ClInclude Include="CReport3.h" />
+    <ClInclude Include="CReportEvents2.h" />
+    <ClInclude Include="CReports.h" />
+    <ClInclude Include="CReturnVar.h" />
+    <ClInclude Include="CReturnVars.h" />
+    <ClInclude Include="CScreen.h" />
+    <ClInclude Include="CSection.h" />
+    <ClInclude Include="CSharedResource.h" />
+    <ClInclude Include="CSharedResources.h" />
+    <ClInclude Include="CSmartTag.h" />
+    <ClInclude Include="CSmartTagAction.h" />
+    <ClInclude Include="CSmartTagActions.h" />
+    <ClInclude Include="CSmartTagProperties.h" />
+    <ClInclude Include="CSmartTagProperty.h" />
+    <ClInclude Include="CSmartTags.h" />
+    <ClInclude Include="CSqmProxyReceiver.h" />
+    <ClInclude Include="CSubForm.h" />
+    <ClInclude Include="CSubReport.h" />
+    <ClInclude Include="CTabControl.h" />
+    <ClInclude Include="CTempVar.h" />
+    <ClInclude Include="CTempVars.h" />
+    <ClInclude Include="CTextbox.h" />
+    <ClInclude Include="CToggleButton.h" />
+    <ClInclude Include="CWebBrowserControl.h" />
+    <ClInclude Include="CWebOptions.h" />
+    <ClInclude Include="CWebService.h" />
+    <ClInclude Include="CWebServices.h" />
+    <ClInclude Include="CWizHook.h" />
+    <ClInclude Include="CWSParameter.h" />
+    <ClInclude Include="CWSParameters.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="WordOption.h" />
+    <ClInclude Include="WordOutput.h" />
+    <ClInclude Include="WordOutputDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="WordOption.cpp" />
+    <ClCompile Include="WordOutput.cpp" />
+    <ClCompile Include="WordOutputDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WordOutput.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WordOutput.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WordOutput.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="WordOutput.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

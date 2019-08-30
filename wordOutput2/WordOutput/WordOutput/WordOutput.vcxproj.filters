@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WordOutput.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WordOutputDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAccessField.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAccessProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAdditionalData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAddTileUIReceiver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CApplication.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAttachment.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAutoCorrect.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoundObjectFrame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CCheckbox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CCombobox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CCommandButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CCurrentData.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CCurrentProject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CCustomControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDataAccessPage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDefaultWebOptions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDependencyInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDependencyObjects.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDesignerReceiver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispControlInReportEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDummy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CEmptyCell.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CForm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CForm2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CForm3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CFormatCondition.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CFormEvents2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CGroupLevel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CHyperlink.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CImage0.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CItemsSelected.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CLabel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CLine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CListBox0.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CLocalVar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CLocalVars.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CMacroError.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CNavigationButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CNavigationControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjectFrame.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="COptionButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="COptionGroup.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPageBreak.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPaletteButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrinter0.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CRecordsetEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CRectangle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReferences.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReferences_Events.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReport.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReport2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReport3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReportEvents2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReturnVar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReturnVars.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSection.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSmartTag.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSmartTagAction.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSmartTagActions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSmartTagProperties.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSmartTagProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSmartTags.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSqmProxyReceiver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSubForm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSubReport.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CTabControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CTempVar.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CTempVars.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CTextbox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CToggleButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CWebBrowserControl.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CWebOptions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CWizHook.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAccessObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAccessObjectProperties.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAccessObjectProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CAllObjects.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CChildren.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CControls.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDataAccessPages.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispAttachmentEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispBoundObjectFrameEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispCheckBoxEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispChildLabelEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispComboBoxEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispCommandButtonEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispCustomControlEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispCustomControlInReportEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispEmptyCellEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispImageEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispLabelEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispLineEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispListBoxEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispNavigationButtonEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispNavigationControlEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispObjectFrameEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispOptionButtonEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispOptionGroupEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispPageBreakEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispPageEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispPageHdrFtrInReportEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispPaletteButtonEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispRectangleEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispSectionEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispSectionInReportEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispSubFormEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispSubReportEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispTabControlEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispTextBoxEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispToggleButtonEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDispWebBrowserControlEvents.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDoCmd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntities.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CEntity.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CFormatConditions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CForms.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CmportExportSpecification.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CmportExportSpecifications.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CModule.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CModules.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="COperation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="COperations.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPages.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CPrinters.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CProperties.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReference.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CReports.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CScreen.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSharedResource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CSharedResources.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CWebService.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CWebServices.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CWSParameter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CWSParameters.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WordOption.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WordOutput.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WordOutputDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WordOption.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WordOutput.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\WordOutput.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\WordOutput.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

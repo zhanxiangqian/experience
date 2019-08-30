@@ -1,0 +1,16 @@
+一般来讲GUI程序不能使用STDIN和STDOUT，但是有时有些特殊需要，希望GUI程序也有控制台，如：一个程序，既可以以GUI方式运行，又可以如果用户在控制台里打程序名的话，就以控制台程序的方式运行。
+
+通过AllocConsole() 和 AttachConsole() 这两个WIN API就能实现上面的需求。这两个API分别是在GUI（MFC）程序中分配一个控制台和将程序附着到一个控制台上。
+
+用法举例： 
+
+AttachConsole(ATTACH_PARENT_PROCESS); // 将当前程序附着到父进程上，因为是从控制台启动的，所以当前程序的父进程就是那个控制台。 
+freopen("CONIN$" , "r+t" , stdin); // 重定向 STDIN 
+freopen("CONOUT$" , "w+t" , stdout); // 重定向STDOUT 
+
+
+打开test.sln之后，在项目的属性页，“配置属性”/“链接器”/“系统”中“子系统”选择“Windows（/SUBSYSTEM:WINDOWS）原先为“控制台(/SUBSYSTEM:CONSOLE)”
+
+
+需要在“高级”选项中添加“入口点”：mainCRTStartup
+可以给GUI增加console窗口
