@@ -10,3 +10,41 @@ dumpbin详细用法  此博文包含图片	(2012-04-06 19:25:11)转载
  输入dumpbin  -exports  dcrf32.dll，回车
  查看段表
   dumpbin /headers my32bit.dll
+
+
+
+
+
+
+vs 常用快捷键
+
+ctrl -回退光标到上一位置
+ctrl shift - 前进光标
+
+编辑
+ctrl u 转小写
+ctrl shift u转大写
+
+ctrl c 复制一行代码，无需选中
+ctrl L 删除一行
+
+ctrl enter 在当前行上面插入一行
+ctrl shift enter在当前行下面插入一行
+
+
+ctrl k d（先触发组合选项使用ctrl k 然后按住 ctrl 同时放开K 再键入后续字母） 格式化整理当前文档（）
+ctrl k f 格式化选中部分的代码
+ctrl k c 注释选中代码
+ctrl k u 取消注释 
+alt shift enter 全屏
+
+
+函数
+ctrl j 列出成员
+alt F12 列出类
+F12转到定义
+shift F12查找所有引用
+ctrl shift space 在函数括号内会提示输入参数。
+
+按两下tab?快速代码段（写for, foreach循环，或者try, 还有绑定事件方法）
+

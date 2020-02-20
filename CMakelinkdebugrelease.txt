@@ -1,0 +1,74 @@
+# copyright 2019 Alta Dynamics
+#
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.9)
+PROJECT(alta_example)
+
+set(alta_dir "Z:/2p/win64/alta" 
+    CACHE PATH "Alta License API directory" )
+
+#------------------------------------------------------
+set(BOOST_ROOT "z:/3p/win64/boost" )
+find_package(Boost 1.61 EXACT REQUIRED
+             COMPONENTS filesystem system thread)
+if (Boost_FOUND)
+     message("Boost include dir: ${Boost_INCLUDE_DIRS}")
+     #message("Boost libraries: ${Boost_LIBRARIES}")
+     if (CMAKE_BUILD_TYPE EQUAL "Debug")
+         set(boost_libs 
+            ${Boost_FILESYSTEM_LIBRARY_DEBUG} 
+            ${Boost_SYSTEM_LIBRARY_DEBUG} 
+            ${Boost_THREAD_LIBRARY_DEBUG})
+     else ()
+         set(boost_libs 
+            ${Boost_FILESYSTEM_LIBRARY_RELEASE} 
+            ${Boost_SYSTEM_LIBRARY_RELEASE} 
+            ${Boost_THREAD_LIBRARY_RELEASE})
+     endif()
+endif()
+
+set(THE_BOOST_SSL_LIBS "")
+if (WIN32)
+  set(openssl_dir "z:/3p/win64/openssl" 
+      CACHE PATH "openssl API directory" )
+
+  set(openssl_INCLUDE_DIR ${openssl_dir}/include)
+
+  set(THE_BOOST_SSL_LIBS 
+      ${boost_libs} ssleay32 libeay32
+  )
+  message("Found boost ssl lib: " "${THE_BOOST_SSL_LIBS}")  
+else ()
+  #openssl should be installed
+  set(THE_BOOST_SSL_LIBS 
+      ${boost_libs} crypto ssl pthread)
+endif()
+
+#-------------------------------------------------------
+set(Qt5_DIR "z:/3p/win64/qt5.9.1_vs2015/lib/cmake/Qt5" )
+find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
+set(qt_libs Qt5::Widgets Qt5::Core)
+
+#-------------------------------------------------------
+INCLUDE_DIRECTORIES(
+    ${Qt5Core_INCLUDE_DIRS} 
+	${Qt5Widgets_INCLUDE_DIRS} 
+    ${Boost_INCLUDE_DIRS}
+    ${openssl_INCLUDE_DIR}
+    ${alta_dir}/include
+)
+link_directories(
+   ${Boost_LIBRARY_DIR_RELEASE}
+   ${Boost_LIBRARY_DIR_DEBUG}
+   ${openssl_dir}/lib
+   ${alta_dir}/lib
+)
+
+#-------------------------------------------------------
+ADD_EXECUTABLE(alta-example  example1.cpp)
+
+TARGET_LINK_LIBRARIES(alta-example
+    debug alta_toold optimized alta_tool
+    ${qt_libs} ${THE_BOOST_SSL_LIBS}
+)
+

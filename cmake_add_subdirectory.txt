@@ -1,0 +1,48 @@
+分类专栏： linux cmake
+一个开发场景: 工程A输出一个库文件， 工程B输出可执行文件，但依赖于A的输出，利用CMake组织二者
+
+
+
+方案1:
+
+两个工程独立编译，把A的输出install到固定目录，工程B到该目录中解决依赖，可以使用find_library()
+
+
+
+方案2:
+
+利用脚本，本质上和方案1一样，但是通过脚本可以大量减少键盘操作
+
+
+
+上述两个方案都是假设在configure工程B的时候，工程A的输出库文件已经存在，否则find_library()会提示错误，有没有办法
+
+在工程A编译之前就成功编译工程B，即在CMake中指定工程B依赖于工程A？
+
+方案3:
+
+在工程B的CMakeLists.txt中使用ADD_SUBDIRECTORY()
+
+如果A工程不在B工程目录结构下，需要指定binary_dir，即A工程输出路径
+
+此时依赖关系不要用find_library()，否则一样错误，而要在target_link_libraries()中指定 (linux下，target_link_libraries()中此时不需要填写
+
+lib的全名，而应该填写工程A的${PROJECT_NAME}即可)
+
+
+
+
+
+方案3的补充：
+
+工程A依赖于B和C， 而B和C同时依赖于D，如果在B和C中都使用ADD_SUBDIRECTORY()增加D，则最终编译A时会提示错误
+
+cannot create target "D" because another target with the same name already exists
+解决方法是在 B和C中使用target属性
+
+if (NOT TARGET D)
+    add_subdirectory( DRoot D)
+endif() 
+
+避免D被重复包含
+
